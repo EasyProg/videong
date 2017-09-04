@@ -1,0 +1,33 @@
+.inputPassword {
+  position:relative;
+  width:100%;
+  margin:10px;
+  height:40px;
+  background: #353535;
+  color:      white;
+  font-family: "Comfortaa Light";
+  text-align: center;
+}
+.inputPassword:hover {
+  cursor:pointer;
+}
+.inputPassword:focus {
+  border:1px solid blueviolet;
+//border-color:blueviolet;
+}
+.divInputPassword {
+  position: relative;
+  margin-bottom:40px;
+  margin-top:40px;
+}
+.saveButton {
+  cursor:pointer;
+  position:relative;
+  width:100%;
+  margin:10px;
+  height:40px;
+  background: blueviolet;
+  color:      white;
+  font-family: "Comfortaa Light";
+  text-align: center;
+}
