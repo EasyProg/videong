@@ -15,12 +15,13 @@ constructor(props) {
 static propTypes = {
 playList:   PropTypes.array.isRequired,
 category:   PropTypes.string.isRequired,
-visibility: PropTypes.bool.isRequired
+visibility: PropTypes.bool.isRequired,
+visibleSetContext:PropTypes.func.isRequired
 };
 handleClick (link,ch,i,cat,channelId) {
-    console.log(channelId+'      '+ this.props.video.channelId);
 this.props.dispatch(changeVideo(link,ch,i,channelId));
 this.props.dispatch(toggleCategory(cat));
+this.props.visibleSetContext();
 //Set UI
 }
 

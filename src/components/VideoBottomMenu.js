@@ -24,7 +24,8 @@ static propTypes = {
         });
         this.props.changeResContext(res.substr(0,res.length-1));
     }
-    changeSize() {
+    changeSize(e) {
+        e.stopPropagation();
         this.props.changeSizeContext();
     }
     setLock(vl) {
@@ -53,7 +54,7 @@ static propTypes = {
                                 {this.state.resolution}
                             </div>
                         </div>
-                        <div className="iconsDiv" onClick={(e)=>this.changeSize()}>
+                        <div className="iconsDiv" onClick={(e)=>this.changeSize(e)}>
                             <div className="upper_buttons_square"/>
                         </div>
                     </div>

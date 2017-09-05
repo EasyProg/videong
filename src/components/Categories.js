@@ -15,13 +15,14 @@ import hlsArray from '../hls';
 //import Css
 import '../styles/css/main_styles.css';
 import 'semantic-ui-css/semantic.min.css';
-export default class Categories extends Component {
+export default class Categories extends Component           {
 constructor(props) {
     super(props);
     this.state = {  visible:false,
                     itemChosen:'',
                     category:''
                  };
+    this.visibleSet = this.visibleSet.bind(this);
                    }
     handleClick (index,cat) {
        this.setState(
@@ -31,6 +32,11 @@ constructor(props) {
            }
            );
                             }
+    visibleSet () {
+    this.setState({
+       visible:false
+    });
+    }
     parse(arr) {
     var channels = [];
     var t = '';
@@ -75,7 +81,7 @@ constructor(props) {
             <div className="divSideBar" onClick={(e)=>this.setState({visible:!this.state.visible})}>
             <Icon className="large inverted sidebar"/>
             </div>
-            <div className={this.state.visible?"categoryPanel":"categoryPanelNone"}>
+            <div className= {this.state.visible?"categoryPanel":"categoryPanelNone"}>
                 {
                             this.Menu.map((item,i)=>
                             <div key={i} className={this.state.itemChosen===i?'categoryItemChosen':'categoryItem'}
@@ -89,9 +95,13 @@ constructor(props) {
                 }
             </div>
             <div className="innerDiv">
-            <ChannelList playList={this.parse(hlsArray)} category={this.state.category} visibility={this.state.visible}/>
+            <ChannelList
+                playList={this.parse(hlsArray)}
+                category={this.state.category}
+                visibility={this.state.visible}
+                visibleSetContext={this.visibleSet}/>
             </div>
             </div>
                 )
                 }
-}
+                                                            }

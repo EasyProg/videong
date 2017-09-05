@@ -10,10 +10,10 @@
 * {
   outline: 0;
   border: 0;
-}
+  }
 body {
   background: black;
-}
+      }
 @font-face {
   font-family: "Comfortaa-Light";
   src: url(../fonts/Comfortaa-Light.ttf);
@@ -32,6 +32,7 @@ body {
   width:100px;
   height: 40px;
   transition: width 1s ease 1s;
+
 
 }
 .testDiv:hover {

@@ -5,7 +5,7 @@
 
 .settings_transition-enter-active {
   max-height: 230px;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease-in;
 }
 
 .settings_transition-leave {
@@ -15,5 +15,5 @@
 
 .settings_transition-leave-active {
   max-height: 0;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-in;
 }

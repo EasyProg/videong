@@ -13,7 +13,7 @@ var result = !isPlaying;
             }
 }
 export function toggleButtons(isVisible) {
-    var result = !isVisible;
+var result = !isVisible;
     return  {
         type:'TOGGLE_BUTTONS',
         isControlElemsVisible:result

@@ -5,9 +5,9 @@ import configureStore from '../store/configureStore';
 import {Provider} from 'react-redux';
 import '../styles/css/main_styles.css';
 import HomeMenu from '../components/HomeMenu';
-const store = configureStore();
+const  store = configureStore();
 var proxy = 'https://cors-anywhere.herokuapp.com/';
-class App extends Component {
+class App extends Component  {
   render() {
     return (
         <Provider store={store}>
@@ -19,6 +19,6 @@ class App extends Component {
         </Provider>
     );
   }
-  }
+                             }
 
 export default App;

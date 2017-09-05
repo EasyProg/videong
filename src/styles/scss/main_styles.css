@@ -99,6 +99,14 @@ video::media-controls {
 #video {
   align-self: center; }
 
+.hoverDiv {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 98%;
+  height: 20px;
+  z-index: 2147483647; }
+
 .homeButton {
   position: absolute;
   left: 97%;
@@ -191,7 +199,7 @@ hr {
 
 .settings_transition-enter-active {
   max-height: 230px;
-  transition: max-height 0.3s ease; }
+  transition: max-height 0.3s ease-in; }
 
 .settings_transition-leave {
   max-height: 230px;
@@ -199,7 +207,7 @@ hr {
 
 .settings_transition-leave-active {
   max-height: 0;
-  transition: max-height 0.3s ease-out; }
+  transition: max-height 0.3s ease-in; }
 
 .select_your_device {
   margin: 20px;
@@ -276,21 +284,32 @@ hr {
 #flip {
   margin: 15px; }
 
-.inputPassword {
+.divInput {
   position: relative;
   width: 100%;
   margin: 10px;
-  height: 40px;
+  height: 50px;
+  background: #353535;
+  padding: 10px;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+.divInput:hover {
+  border: 1px solid blueviolet;
+  cursor: pointer; }
+
+.inputPassword {
+  width: 80%;
+  height: 35px;
   background: #353535;
   color: white;
   font-family: "Comfortaa Light";
-  text-align: center; }
-
-.inputPassword:hover {
-  cursor: pointer; }
-
-.inputPassword:focus {
-  border: 1px solid blueviolet; }
+  text-align: left;
+  padding: 10px;
+  font-size: 1em; }
 
 .divInputPassword {
   position: relative;
@@ -307,6 +326,19 @@ hr {
   color: white;
   font-family: "Comfortaa Light";
   text-align: center; }
+
+.circleButtonSpanInput, .circleButtonSpanInput:hover {
+  width: 40px;
+  height: 40px;
+  background: #323232;
+  border-radius: 30px;
+  position: relative;
+  align-items: center;
+  line-height: 3em; }
+
+.circleButtonSpanInput:hover {
+  cursor: pointer;
+  background: #434343; }
 
 .categoryPanel {
   display: block;
