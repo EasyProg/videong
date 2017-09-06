@@ -5,13 +5,14 @@ import {changeVideo,toggleCategory} from '../actions/actions';
 import {Button} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/css/main_styles.css';
-var proxy = 'https://cors-anywhere.herokuapp.com/';
+//import '../components/Channel';
+import Channel from './Channel';
 class ChannelList extends Component {
 constructor(props) {
     super(props);
     this.filterChannels = this.filterChannels.bind(this);
     this.handleClick = this.handleClick.bind(this);
-}
+                   }
 static propTypes = {
 playList:   PropTypes.array.isRequired,
 category:   PropTypes.string.isRequired,
@@ -23,42 +24,44 @@ this.props.dispatch(changeVideo(link,ch,i,channelId));
 this.props.dispatch(toggleCategory(cat));
 this.props.visibleSetContext();
 //Set UI
-}
+                                      }
 
 filterChannels(channels) {
 let cat = this.props.category;
-let filteredChannels = [] ;
+let filteredChannels = [];
 if (channels) {
      filteredChannels =  channels.filter(function(item)
      {
-     if (cat !=='all')
+     if (cat !=='all'&&cat !=='любимые')
      return item.category === cat;
      else return item.category
      })
- }
+              }
  return filteredChannels;
-                        }
+                         };
 //
 render(){
+    console.log(this.props.category);
     //filterChannels to category
 this.massive = this.filterChannels(this.props.playList);
-console.log(this.massive);
 return         (
                <div>
-               <div className={this.props.visibility?'menuChannel':'menuChannelNone'}>
+               <div className={this.props.visibility?'menuChannel':'menuChannelNone'} onClick={this.props.onClick}>
                {this.massive.map((elem, i) =>
-               <div key={i} className={elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory?'menuItemStylefocus':'menuItemStyle'}
-               onClick={e=>this.handleClick(elem.link,elem.channel,i,elem.category,elem.channelId)} tabIndex={i}>
-               <span className="span">{i+1}</span>
-               <span>{elem.channel}</span>
-               <div className={elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory?'circleButtonSpan':'circleButtonSpanNone'}>
-               <Button circular icon='angle right' color="violet" onClick={(e)=>{e.stopPropagation()}}/>
-               </div>
-               </div>
-               )}
-               </div>
-               </div>
+                            <Channel
+                            key={i}
+                            channelId={elem.channelId}
+                            hiddenChannel={true}
+                            programName={elem.channel}
+                            favorite={this.props.category==='любимые'}
+                            chosen=  {elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
+                            onClick= {e=>this.handleClick(elem.link,elem.channel,i,elem.category,elem.channelId)}
+                   />
                )
+               }
+               </div>
+               </div>
+)
 }
 }
 const mapDispatchToProps = (dispatch) => bindActionCreators({

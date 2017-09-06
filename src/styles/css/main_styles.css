@@ -2,18 +2,19 @@
 .menuItemStyle, .menuItemStylefocus {
   display: block;
   cursor: pointer;
-  width: 300px;
+  width: 320px;
   background: rgba(0, 0, 0, 0.3);
   font-family: "Comfortaa Light";
   font-weight: normal;
   color: white;
   height: 60px;
-  line-height: 4em; }
+  line-height: 4.1em; }
 
 .menuItemStyle:hover, .menuItemStylefocus:hover {
   background: rgba(87, 87, 87, 0.6); }
 
 .menuItemStylefocus {
+  width: 320px;
   background: blueviolet; }
 
 .circleButtonSpan {
@@ -63,7 +64,9 @@
   width: 20px;
   float: left;
   margin-right: 15px;
-  margin-left: 15px; }
+  margin-left: 15px;
+  font-size: 15px;
+  letter-spacing: 1px; }
 
 video::-webkit-media-controls {
   display: none; }
@@ -350,6 +353,14 @@ hr {
   left: 70px;
   transition: left 0.5s ease 100ms; }
 
+.categoryLine, .categoryLineNone {
+  position: absolute;
+  left: 7%;
+  vertical-align: bottom; }
+
+.categoryLineNone {
+  display: none; }
+
 .categoryPanelNone {
   margin-top: 20px;
   position: absolute;
@@ -549,6 +560,18 @@ hr {
   position: relative;
   width: 20px;
   height: 21px; }
+
+.tvimg {
+  margin-right: 20px;
+  margin-top: 7px; }
+
+.pname {
+  position: absolute; }
+
+.pnameFav {
+  position: relative;
+  left: 50%;
+  top: -50%; }
 
 * {
   outline: 0;

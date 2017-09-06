@@ -19,7 +19,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -45,5 +45,5 @@
     "sass-loader": "^6.0.6",
     "webpack": "^3.5.5"
   },
-  "homepage": "https://easyprog.github.io"
+  "homepage": "https://easyprog.github.io/video"
 }

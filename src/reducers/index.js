@@ -14,7 +14,7 @@ const initialState = {
         isControlMenuVisible:false,
                     };
 const channelState = {
-        chosenCategory:0
+        category:''
 };
 function videoReducer(state=initialState,action=null)           {
     switch (action.type) {

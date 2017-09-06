@@ -3,7 +3,7 @@ import '../styles/css/main_styles.css';
 import eye from '../img/eye.png' ;
 import eye_close from '../img/eye_close.png';
 
-export default class ParentalControl extends Component {
+export default class ParentalControl extends Component      {
     constructor(props) {
         super(props);
         this.toggleType = this.toggleType.bind(this);
@@ -39,14 +39,19 @@ toggleType(num,state) {
                     </div>
                     <div className="divInput">
                     <input className="inputPassword" placeholder= "New password"
-                                        ref={(input)=>this.confirmPass = input}
+                                        ref={(input)=>this.newPass = input}
                                         type={this.state.pass2?'password':'text'} required/>
                                         <div className="circleButtonSpanInput"
                                              onClick={(e)=>this.toggleType(2,this.state.pass2)}>
                             <img src={this.state.pass2?eye_close:eye}  width={20} height={20}/>
                         </div>
                     </div>
-                    <button className="saveButton">Save all</button>
+                    <div className="divInput">
+                        <input className="inputPassword" placeholder= "Confirm password"
+                               ref={(input)=>this.confirmPass = input}
+                               type='password' required/>
+                    </div>
+                    <button className="saveButton">SAVE ALL</button>
                 </div>
                     )
             }

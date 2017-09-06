@@ -8,6 +8,10 @@ import mask from '../img/mask.png';
 import headphones from '../img/headphones.png';
 import star from '../img/shooting-star.png';
 import masks from '../img/theater.png';
+import underline from '../img/Underline.png';
+import play from '../img/play-categ.png';
+import lock from '../img/lock.png';
+import all from '../img/crowd-of-users.png'
 //import elements
 import {Icon} from 'semantic-ui-react';
 import ChannelList from '../components/ChannelList';
@@ -31,6 +35,7 @@ constructor(props) {
             category:cat
            }
            );
+       console.log('Fuck');
                             }
     visibleSet () {
     this.setState({
@@ -66,8 +71,10 @@ constructor(props) {
      return(channels);
 }
     Menu = [
-    {name:'All',         src:'none',    category:'all'},
-    {name:'Now watching',src:star},
+    {name:'All',         src:all,       category:'all'},
+    {name:'Now watching',src:play,      category:54},
+    {name:'Favorites',   src:star,      category:'любимые'},
+    {name:'Blocked',     src:lock,      category:'locked'},
     {name:'TV Shows',    src:scene},
     {name:'Films',       src:film,      category:'фильмы'},
     {name:'Music',       src:headphones,category:'музыкальный'},
@@ -84,13 +91,13 @@ constructor(props) {
             <div className= {this.state.visible?"categoryPanel":"categoryPanelNone"}>
                 {
                             this.Menu.map((item,i)=>
-                            <div key={i} className={this.state.itemChosen===i?'categoryItemChosen':'categoryItem'}
-                                     onClick={(e)=>this.handleClick (i,item.category)}>
+                            <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)}>
                             <div className="categoryImage"><img src={item.src} width="40" height="40"/></div>
                             <div className="categoryText">
                             {item.name}
                             </div>
-                        </div>
+                            <img src={underline} height={5} width={250} className={this.state.itemChosen===i?'categoryLine':'categoryLineNone'}/>
+                            </div>
                                         )
                 }
             </div>

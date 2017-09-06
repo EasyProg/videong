@@ -8,6 +8,7 @@ import arch from '../img/play.png';
 import LoginDiv from '../components/LoginDiv';
 import Settings from '../components/Settings';
 import ParentalControl from '../components/ParentalControl';
+import VideoArchive from '../components/VideoArchive';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class HomeMenu extends Component {
@@ -32,6 +33,10 @@ export default class HomeMenu extends Component {
         console.log(this.state.itemChosen);
 
         switch (item)          {
+            case 1:
+                       return  (
+                <VideoArchive key={item}/>
+                                );
             case 2:
                        return  (
                 <ParentalControl key={item}/>

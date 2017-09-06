@@ -190,7 +190,7 @@ constructor(props)                  {
         this.videoOnLoad();
             return (
                 <div                 ref={(dv)=>this.div=dv} className="centerDiv">
-                    <video           width={1200} height={750} id="video" ref={(video)=>this.video=video}
+                    <video           width={1500} height={750} id="video" ref={(video)=>this.video=video}
                                      autoPlay={this.props.isPlaying}
                                      //onClick={}
                                         />

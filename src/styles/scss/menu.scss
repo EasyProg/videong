@@ -2,20 +2,22 @@ $menu-width:250px;
 .menuItemStyle {
   display: block;
   cursor: pointer;
-  width:300px;
+  width:320px;
   background: rgba(0,0,0,0.3);
   font-family: "Comfortaa Light";
   font-weight: normal;
   color:white;
   height: 60px;
-  line-height: 4em;
+  line-height: 4.1em;
 }
 .menuItemStyle:hover {
   background: rgba(87, 87, 87, 0.6);
 }
 .menuItemStylefocus {
   @extend .menuItemStyle;
+  width:320px;
   background: blueviolet;
+
 }
 .circleButtonSpan {
   width:40px;
@@ -32,14 +34,14 @@ $menu-width:250px;
   position: absolute;
   left: -500px;
   transition: left 0.5s ease 100ms;
-}
+                }
 .menuChannel {
   //display: block;
   position: absolute;
   left:320px;
   transition: left 0.5s ease 100ms;
   //transform(translate($menu-width, 0, 0));
-}
+            }
 .divSideBar {
   //position:absolute;
   text-align: center;
@@ -69,6 +71,8 @@ $menu-width:250px;
   float: left;
   margin-right: 15px;
   margin-left: 15px;
+  font-size:15px;
+  letter-spacing: 1px;
 }
 //.spanNone {
 //  display:block;
