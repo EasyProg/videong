@@ -67,10 +67,10 @@ constructor(props)                                  {
         if (navigator.userAgent.indexOf('WOW64')!==-1) {
             hls.loadSource(this.props.video.videoStr);
         }
-        else {hls.loadSource(proxy+this.props.video.videoStr);}
+        else {hls.loadSource(this.props.video.videoStr);}
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED,function () {
-            video.play();
+            video.play(); 
                                                       });
         if (video)  {
             video.addEventListener('timeupdate', this.handleOnPlay);
