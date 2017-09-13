@@ -23,8 +23,8 @@ export default class Categories extends Component  {
 constructor(props) {
     super(props);
     this.state = {
-                    itemChosen:'',
-                    category:''
+        itemChosen:'',
+        category:''
                  };
     //this.visibleSet = this.visibleSet.bind(this);
                    }
@@ -68,17 +68,18 @@ constructor(props) {
      return(channels);
 }
     Menu =     [
-    {name:'All',         src:all,       category:'all'},
-    {name:'Now watching',src:play,      category:54},
-    {name:'Favorites',   src:star,      category:'любимые'},
-    {name:'Blocked',     src:lock,      category:'locked'},
+    {name:'All',         src:all,       category:'All'},
+    {name:'Now watching',src:play,      category: 54},
+    {name:'Favorites',   src:star,      category:'Любимые'},
+    {name:'Blocked',     src:lock,      category:'Locked'},
     {name:'TV Shows',    src:scene},
-    {name:'Films',       src:film,      category:'фильмы'},
-    {name:'Music',       src:headphones,category:'музыкальный'},
+    {name:'Films',       src:film,      category:'Фильмы'},
+    {name:'Music',       src:headphones,category:'Музыкальный'},
     {name:'Popular',     src:mask},
     {name:'3D / VR',     src:glasses},
     {name:'Travel',      src:caravan},
-    {name:'Comedy',      src:masks,     category:'развлекательный'}];
+    {name:'Comedy',      src:masks,     category:'Развлекательный'}
+                ];
     render()   {
         return (
             <div>

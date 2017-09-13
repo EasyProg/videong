@@ -1,13 +1,12 @@
-
 import {combineReducers} from 'redux';
 
-
 const initialState = {
-        video: {videoStr:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
+        video:  {videoStr:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
         channelId:51,
         channel: '1+1',
         itemChosen:null,
-        },
+                },
+//Global state variables
         isPlaying:true,
         autoPlay:true,
         isControlElemsVisible:false,
@@ -16,11 +15,8 @@ const initialState = {
         isControlMenuVisible:false,
                      };
 const channelState = {
-        category:''
+      chosenCategory:'all'
                      };
-const menuState = {
-
-                  };
 
 function videoReducer(state=initialState,action=null)           {
     switch (action.type) {
@@ -40,18 +36,18 @@ function videoReducer(state=initialState,action=null)           {
             return state;
                         }
                                                                 }
-
+//After adding all channels variables
 function channelReducer (state=channelState,action=null)        {
     switch (action.type) {
         case 'TOGGLE_CATEGORY' :
             return {...state,chosenCategory:action.category};
         default:
             return state;
-                        }
+                         }
                                                                 }
-
+//Combine reducers
 const videoApp = combineReducers({
     videoReducer,
     channelReducer
-});
+                                 });
 export default videoApp;

@@ -7,7 +7,7 @@ import configureStore from '../store/configureStore';
 import {Provider} from 'react-redux';
 import '../styles/css/main_styles.css';
 const  store = configureStore();
-var proxy = 'https://cors-anywhere.herokuapp.com/';
+//var proxy = 'https://cors-anywhere.herokuapp.com/';
 class App extends Component  {
   render() {
     return (

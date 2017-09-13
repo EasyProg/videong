@@ -23,10 +23,13 @@ export default class Rating extends Component {
             <span className="rateContainer">
                 {
                     this.starArr.map((elem,i)=>
-                    <div key={i} className={this.props.rate>i&&!this.props.chosen?'rateDivFilled':this.props.rate>i&&this.props.chosen?'rateDivFilledChosen':'rateDivEmpty'}/>)
+                    <div key={i}
+                    className={this.props.rate>i&&!this.props.chosen?
+                        'rateDivFilled':this.props.rate>i&&this.props.chosen?
+                        'rateDivFilledChosen':'rateDivEmpty'}/>)
 
                 }
             </span>
                 )
                            }
-}
+                                             }

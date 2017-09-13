@@ -26,6 +26,7 @@ class VideoPlayer extends Component                 {
 
 constructor(props)                                  {
         super(props);
+        //Bind functions
         this.handleOnPlay = this.handleOnPlay.bind(this);
         this.changeSize = this.changeSize.bind(this);
         this.changeRes = this.changeRes.bind(this);
@@ -41,9 +42,13 @@ constructor(props)                                  {
 //Component Functions
         shouldComponentUpdate(nextProps,nextState)  {
         if (nextProps.fullScreen!==this.props.fullScreen
+            //|| nextProps.video.channelId!==this.props.video.channelId
             )
         {return false}
         else return true                            }
+        // componentWillReceiveProps() {
+        // this.videoOnLoad();
+        // }
         componentDidMount() {
         this.videoOnLoad();
                             }
@@ -76,7 +81,7 @@ constructor(props)                                  {
             video.addEventListener('timeupdate', this.handleOnPlay);
                     }
                     }
-        handleOnPlay() {
+        handleOnPlay()      {
         var videoSets = this.video;
         const time = videoSets.currentTime||0;
         const duration = videoSets.duration||100;
@@ -88,7 +93,7 @@ constructor(props)                                  {
         var percentage = Math.floor((100 / duration) * time);
         progressBar.value     = percentage;
         progressBar.innerHTML = percentage+'%';
-                        }
+                            }
         handleCurrTime(param)       {
         var videoSets = this.video;
         if (param===1)

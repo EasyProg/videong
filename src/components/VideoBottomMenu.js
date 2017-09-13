@@ -3,12 +3,13 @@ import {Button,Icon} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/css/main_styles.css';
 import  {connect} from 'react-redux';
-import border from '../img/selector-square-border.png';
+import border from '../img/switch_button.gif';
+import live from '../img/live-icon.gif';
 class VideoBottomMenu extends Component  {
 static propTypes = {
     changeSizeContext:PropTypes.func.isRequred,
     changeResContext:PropTypes.func.isRequred
-};
+                   };
     resolutions = ['360р','480р','720р','1080р','1440р'];
     constructor(props) {
         super(props);
@@ -24,17 +25,17 @@ static propTypes = {
             resolution:res
         });
         this.props.changeResContext(res.substr(0,res.length-1));
-    }
+                           }
     changeSize(e) {
         e.stopPropagation();
         this.props.changeSizeContext();
     }
     setLock(vl) {
-        this.setState (
+        this.setState      (
             {
                 lock:!vl,
             }
-        )
+                           )
     }
     render () {
         {if (this.state.showResolution === false) {
@@ -48,7 +49,7 @@ static propTypes = {
                             <Icon className="large inverted bookmark"/>
                         </div>
                         <div className="iconsDiv">
-                            <div className="upper_buttons_live">LIVE</div>
+                          <img src={live} width={40} height={30} className="imgLive"/>
                         </div>
                         <div className="iconsDiv" onClick={(e) => this.setState({showResolution: true})}>
                             <div className="upper_buttons_res">

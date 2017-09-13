@@ -22,18 +22,16 @@ export default class Channel extends Component {
 
     render() {
         return (
-            <div      className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick}>
-                <span className="span">{this.props.channelId}</span>
-                <img  width={40} height={40} src={this.props.hiddenChannel?hiddenchannel:nochannel} className="tvimg"/>
-                {/*<span className="pnameShadow"/>*/}
-                <span className="pname">
-                    {this.props.programName}
-                    <span className="pnameShadow"/>
-                </span>
-                {this.props.favorite ? <span className="pnameFav"><Icon className="small orange bookmark"/></span> : ''}
-                <Rating maxRate={5} rate={3} chosen={this.props.chosen}/>
-                {/*{!this.props.hiddenChannel ? <img width={40} height={40} src='' className="tvimg"/> : ''}*/}
-            </div>
+                <div    className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick}>
+                        <span className="span">{this.props.channelId}</span>
+                        <img  width={40} height={40} src={this.props.hiddenChannel?hiddenchannel:nochannel} className="tvimg"/>
+                        <span className="pname">
+                            {this.props.programName}
+                            <span className="pnameShadow"/>
+                        </span>
+                        {this.props.favorite ? <span className="pnameFav"><Icon className="small orange bookmark"/></span> : ''}
+                        <Rating maxRate={5} rate={1} chosen={this.props.chosen}/>
+                </div>
                 )
              }
                                                 }

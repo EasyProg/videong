@@ -81,8 +81,6 @@
   //position: inherit;
 }
 //
-
-
 .upper_buttons_res {
   margin: auto;
   color: white;
@@ -100,4 +98,9 @@
   z-index:3;
   border:1px solid white;
   //line-height: 3em;
+}
+
+.imgLive {
+  position:relative;
+  top:-5px;
 }

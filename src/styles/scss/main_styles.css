@@ -29,6 +29,7 @@
   visibility: hidden; }
 
 .menuChannel, .menuChannelNone {
+  height: 600px;
   position: absolute;
   top: 20px;
   left: 320px;
@@ -432,6 +433,7 @@ hr {
   z-index: 2147483647; }
 
 .playerButtonsDiv {
+  cursor: pointer;
   display: flex;
   display: -webkit-flex;
   margin: auto;
@@ -565,6 +567,10 @@ hr {
   z-index: 3;
   border: 1px solid white; }
 
+.imgLive {
+  position: relative;
+  top: -5px; }
+
 .tvimg {
   margin-right: 20px;
   margin-top: 7px; }
@@ -586,7 +592,8 @@ hr {
 .pnameFav {
   position: relative;
   left: 190px;
-  top: -50%; }
+  top: -50%;
+  z-index: 33; }
 
 .rateContainer {
   position: relative;
@@ -738,15 +745,14 @@ body {
   height: 50px;
   display: flex; }
 
-.menuCenterText:first-line {
+.menuCenterText {
   letter-spacing: 2px;
   font-family: "Comfortaa Light";
   font-weight: bold;
   font-size: 20px;
   color: white;
   font-family: "Comfortaa Light";
-  font-weight: normal;
-  color: white; }
+  font-weight: normal; }
 
 .displayNone {
   display: none; }
