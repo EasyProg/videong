@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 
 
 const initialState = {
-        video: {videoStr:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
+        video: {videoStr:'https://cdnua01.hls.tv/hls/aef8a6a3b11ae0ae60938e653fcdd7aa/51/stream.m3u8',
         channelId:51,
         channel: '1+1',
         itemChosen:null,
