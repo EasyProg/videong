@@ -12,7 +12,7 @@ import * as $ from 'jquery';
 //import css//
 //import 'semantic-ui-css/semantic.min.css'//;
 import '../styles/css/main_styles.css';
-var proxy = 'https://cors-anywhere.herokuapp.com/';
+//var proxy = 'https://cors-anywhere.herokuapp.com/';
 var timeFormat = function(seconds)  {
     var m = Math.floor(seconds/60)<10 ? "0"+Math.floor(seconds/60) : Math.floor(seconds/60);
     var s = Math.floor(seconds-(m*60))<10 ? "0"+Math.floor(seconds-(m*60)) : Math.floor(seconds-(m*60));
