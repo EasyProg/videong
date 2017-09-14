@@ -11,7 +11,7 @@ deploy:webplayer.test.hls.tv:
     - git add .
     - git checkout -f master
     - git pull origin master
-    - npm install
+    - npm i
     - npm run build
     - rm -rf public
     - mv build public
