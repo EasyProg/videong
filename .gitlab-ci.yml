@@ -8,6 +8,7 @@ deploy:webplayer.test.hls.tv:
   only:
     - master
   script:
+    - bash
     - cd /var/www/webplayer.hls.tv
     - git add .
     - git checkout -f master
