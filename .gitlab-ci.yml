@@ -1,0 +1,18 @@
+stages:
+  - test
+
+deploy:webplayer.test.hls.tv:
+  stage: test
+  tags:
+    - webplayer.test.hls.tv
+  only:
+    - master
+  script:
+    - npm install
+    - npm run build
+    - rm -rf public
+    - mv build public
+  after_script:
+    - echo "Successfully deployed webplayer.test.hls.tv"
+  environment:
+       webplayer.test.hls.tv
