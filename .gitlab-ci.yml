@@ -14,6 +14,7 @@ deploy:webplayer.test.hls.tv:
     - git checkout -f master
     - git pull origin master
     - npm i
+    - unset CI
     - npm run build
     - rm -rf public
     - mv build public
