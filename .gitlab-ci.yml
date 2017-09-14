@@ -8,6 +8,7 @@ deploy:webplayer.test.hls.tv:
   only:
     - master
   script:
+    - git add .
     - git checkout -f master
     - git pull origin master
     - npm install
