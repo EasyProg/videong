@@ -1,4 +1,9 @@
-.centerDiv {
+$divPlayerWidth:80%;
+$divPlayerWidthPx:1000px;
+$plButtonsLeft:10%;
+
+
+.centerDiv  {
   //text-align: center;
   display:flex;
   display:-webkit-flex;
@@ -17,12 +22,14 @@
                 }
 .divPlayer {
   align-self: center;
-  position: relative;
-  width: 50%;
-  max-width:800px;
-  min-width:400px;
+  position: absolute;
+  top:85%;
+  left:$plButtonsLeft;
+  width: $divPlayerWidth;
+  max-width:$divPlayerWidth;
+  min-width:350px;
   height: 60px;
-  background: blueviolet;
+  background: $main_color;
   display:flex;
   display:-webkit-flex;
   flex-direction:row;
@@ -30,17 +37,18 @@
   -webkit-align-items: center;
   justify-content: space-between;
   -webkit-justify-content:space-between;
-  //z-index:2147483647;
-          }
-.divPlayerFullSize {
-  @extend .divPlayer;
-  position: absolute;
-  top:85%;
-  width:800px;
-  //left:7%;
   z-index:2147483647;
-                   }
+          }
+//.divPlayerFullSize {
+//  @extend .divPlayer;
+//  position: absolute;
+//  top:85%;
+//  width:800px;
+//  //left:7%;
+//  z-index:2147483647;
+//                   }
 .playerButtonsDiv {
+  //z-index:2147483648;
   cursor:pointer;
   display:flex;
   display:-webkit-flex;
@@ -52,27 +60,30 @@
   -webkit-justify-content:space-between;
   align-items: center;
   -webkit-align-items: center;
-              }
+                  }
 .videoTime {
   cursor: default;
   line-height: 3.4em;
   margin-left: 20px;
   margin-right: 20px;
   height: 60px;
-  width: 50px;
+  width:  50px;
   font-size: 1.3em;
   font-family: "RobotoRegular";
   color: white;
           }
 .progressBar {
+  position: absolute;
+  top:84%;
+  left:$plButtonsLeft;
   align-self: center;
   -webkit-align-self: center;
-  height: 15px;
-  width: 50%;
-  max-width:800px;
-  min-width:400px;
+  height: 10px;
+  width:$divPlayerWidth;
+  max-width:$divPlayerWidth;
+  min-width:350px;
   background:white;
-      }
+             }
 
 .progressBarFull  {
   align-self: center;
@@ -82,11 +93,11 @@
   background:white;
                   }
 #progress-bar::-webkit-progress-bar {
-  background: #7d00ce;
+  background: $main_color;
 }
 #progress-bar::-webkit-progress-value {
   background:white;
 }
 #progress-bar::-moz-progress-bar {
-  background:blueviolet;
+  background:$main_color;
 }

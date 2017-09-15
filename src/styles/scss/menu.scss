@@ -1,3 +1,4 @@
+@import 'variables';
 $menu-width:250px;
 .menuItemStyle {
   display: block;
@@ -16,7 +17,7 @@ $menu-width:250px;
 .menuItemStylefocus {
   @extend .menuItemStyle;
   width:320px;
-  background: blueviolet;
+  background: $main_color;
 
 }
 .circleButtonSpan {
@@ -48,7 +49,7 @@ $menu-width:250px;
   //position:absolute;
   //text-align: center;
   line-height: 2.8em;
-  margin-left: 10px;
+  margin-left: 50px;
   text-align: center;
   width:45px;
   height:45px;

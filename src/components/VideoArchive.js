@@ -33,7 +33,7 @@ var arch =
 ];
 
 
-export default class VideoArchive extends Component     {
+export default class VideoArchive extends  Component     {
 constructor(props)      {
     super(props);
                         }

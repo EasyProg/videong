@@ -1,3 +1,5 @@
+@import 'variables';
+
 .categoryPanel {
   top:0;
   display:block;
@@ -49,7 +51,7 @@ display:none;
 }
 .categoryItemChosen {
   @extend .categoryItem;
-  color: #a46eff;
+  color: $main_color;
 }
 .categoryText {
   align-self: center;

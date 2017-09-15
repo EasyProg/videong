@@ -47,26 +47,26 @@ constructor(props) {
     let parseChannelID = 0;
     if (arr) {
         arr.map((e, i) => {
-            if (typeof e === 'object')  {
+            if (typeof e === 'object')    {
                 for (var key in e.EXTINF) {
                     if (key !== 'aspect-ratio') {
                         t = key;
-                    }
+                                                }
                     else {
                         var c =  e.EXTINF['aspect-ratio'];
                         parseCategory = c.substring(c.indexOf('category=',1)+9,c.indexOf(';keycode',1));
                         parseChannelID= Number(c.substring(c.indexOf('id=',1)+3,c.indexOf(';category',1)));
                          }
-                }
-                                        }
-            if (typeof e === 'string')  {
+                                          }
+                                          }
+            if (typeof e === 'string')    {
                 link = e;
                 channels.push({channelId:parseChannelID,channel: t, link: link, category:parseCategory,img:'none'});
-                                        }
+                                          }
         });
-    }
-     return(channels);
-}
+               }
+    return(channels);
+               }
     Menu =     [
     {name:'All',         src:all,       category:'All'},
     {name:'Now watching',src:play,      category: 54},
@@ -98,10 +98,10 @@ constructor(props) {
             </div>
             <div className="innerDiv">
             <ChannelList
-                playList={this.parse(hlsArray)}
-                category={this.state.category}
-                visibility={this.props.visible}
-                visibleSetContext={this.props.toggleMenuStateContext}/>
+                    playList={this.parse(hlsArray)}
+                    category={this.state.category}
+                    visibility={this.props.visible}
+                    visibleSetContext={this.props.toggleMenuStateContext}/>
             </div>
             </div>
                 )

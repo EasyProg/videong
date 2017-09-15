@@ -29,9 +29,10 @@ var result = !isVisible;
             }
 }
 export function toggleFullScreen(isFullScreen) {
+    var isNotFullScreen = isFullScreen;
     return  {
         type:'TOGGLE_FULLSCREEN',
-        fullScreen:isFullScreen
+        fullScreen:isNotFullScreen
             }
 }
 export function toggleCategory(category) {

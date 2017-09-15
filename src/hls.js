@@ -1,5 +1,5 @@
 const playList = [{ EXTINF:
-     { 'aspect-ratio': '4:3;id=51;category=информационный;keycode=1;thumb=https://admin.hls.tv/cdn/logo/746d07c80571189d7d991e6810c9d34d.jpg;type=hls',
+   { 'aspect-ratio': '4:3;id=51;category=информационный;keycode=1;thumb=https://admin.hls.tv/cdn/logo/746d07c80571189d7d991e6810c9d34d.jpg;type=hls',
        '1+1': undefined } },
   'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/51/stream.m3u8',
   { EXTINF: 

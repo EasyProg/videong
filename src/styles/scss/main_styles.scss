@@ -9,6 +9,7 @@
 @import "video_bottom_menu";
 @import "TVChannelImg";
 @import "videoarchive";
+
 * {
   outline: 0;
   border: 0;
@@ -81,4 +82,13 @@ background: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
 
 .displayNone {
   display:none;
+  //position:relative;
+  //top:-10%;
+  //position: absolute;
+  z-index:2147483647;
+}
+
+#video {
+  position:relative;
+  //left:10%;
 }

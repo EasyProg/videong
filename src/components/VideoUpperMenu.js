@@ -11,16 +11,17 @@ class VideoUpperMenu extends Component {
         handleOnPlayContext:PropTypes.func.isRequred,
         handleCurrentTimeContext:PropTypes.func.isRequred,
         handleCurrPlaybackContext:PropTypes.func.isRequred,
-        isPlaying:PropTypes.bool.isRequired
+        isPlaying:PropTypes.bool.isRequired,
+        //visible:PropTypes.bool.isRequired
                        };
     //Constructor of the class
     constructor(props)  {
         super(props);
                         }
     render() {
-         return (       <div id="vduppermenu" className={this.props.fullScreen?"centerDivFull":"centerDiv"}>
-                        <progress id='progress-bar' min='0' max='100' value='0' className={this.props.fullScreen?'progressBarFull':'progressBar'}>0% played</progress>
-                        <div className={this.props.fullScreen?"divPlayerFullSize":"divPlayer"}>
+         return (       <div id="vduppermenu" className="displayNone">
+                        <progress id='progress-bar' min='0' max='100' value='0' className='progressBar'>0% played</progress>
+                        <div className="divPlayer">
                         <div className="videoTime" id="currentTime">{this.props.handleOnPlayContext.currentTime}</div>
                         <div className="playerButtonsDiv">
                         <Icon className="large inverted step backward" onClick={(e)=>this.props.handleCurrentTimeContext(0)}/>

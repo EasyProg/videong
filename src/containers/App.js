@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import VideoPlayer from '../components/VideoPlayer';
-// import Categories from '../components/Categories';
-// import HomeMenu from '../components/HomeMenu';
+//import Categories from '../components/Categories';
+//import HomeMenu from '../components/HomeMenu';
 import Menu from '../components/ui/Menu';
 import configureStore from '../store/configureStore';
 import {Provider} from 'react-redux';
@@ -15,7 +15,6 @@ class App extends Component  {
         <div>
             <VideoPlayer/>
             <Menu/>
-            {/*<HomeMenu/>*/}
         </div>
         </Provider>
     );
