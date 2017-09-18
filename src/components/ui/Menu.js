@@ -8,7 +8,7 @@ import '../../styles/css/main_styles.css';
 import Categories from '../Categories';
 import HomeMenu from '../HomeMenu';
 import home from '../../img/hm.png';
-
+import * as $ from 'jquery';
 class Menu extends Component            {
     constructor(props) {
         super(props);
@@ -25,6 +25,7 @@ class Menu extends Component            {
                categoryMenuVisible:!categoryState,
                settingsVisible:false
                                                   }));
+        $('#channels').focus();
         }
         else
         {
@@ -34,21 +35,6 @@ class Menu extends Component            {
                 settingsVisible:!settingsState
             }));
         }
-                                        }
-    shouldComponentUpdate(props,next)   {
-        //console.log(props);
-        //console.log(next);
-    //Не перерисовывать все если изменяется FullScreen
-        if (next&&next!==null)  {
-            if (props.fullScreen !== next.fullScreen) {
-                this.props.dispatch(setChannelsVisible({
-                    channelsMenuVisible: false,
-                    categoryMenuVisible: false,
-                    settingsVisible: false
-                                                       }));
-            }
-                                }
-        return true
                                         }
     render() {
         return (

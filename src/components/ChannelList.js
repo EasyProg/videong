@@ -36,7 +36,7 @@ render(){
 this.props.dispatch(getChannels(this.props.playList));
 return         (
                <div>
-               <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick}>
+               <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick} id="channels">
                <PerfectScrollbar>
                {this.props.playList.map((elem, i) =>
                             <Channel
@@ -56,7 +56,12 @@ return         (
         }
                                         }
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-dispatch,changeVideo,toggleCategory,togglePlay,getChannels,setChannelsVisible
+dispatch,
+changeVideo,
+toggleCategory,
+togglePlay,
+getChannels,
+setChannelsVisible
 }, dispatch);
 export default connect(
 state => ({

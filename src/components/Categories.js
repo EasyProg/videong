@@ -102,14 +102,12 @@ if (channels) {
      else return item.category
      })
               }
-
- //this.props.dispatch(getChannels(filteredChannels));
  return filteredChannels;
                                        };
     render()   {
         return (
             <div>
-            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"}>
+            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1}>
                 {
                             this.Menu.map ((item,i)=>
                             <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)}>
@@ -127,7 +125,9 @@ if (channels) {
                     playList={this.filterChannels(this.parse(hlsArray))}
                     category={this.state.category}
                     visibility={this.props.channelVisible}
-                    visibleSetContext={this.props.toggleMenuStateContext}/>
+                    visibleSetContext={this.props.toggleMenuStateContext}
+                    tabIndex={1}
+            />
             </div>
             </div>
                 )

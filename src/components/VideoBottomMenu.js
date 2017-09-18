@@ -12,31 +12,31 @@ static propTypes = {
     //visible:PropTypes.bool.isRequired
                    };
     resolutions = ['360р','480р','720р','1080р','1440р'];
-    constructor(props) {
+    constructor(props)      {
         super(props);
         this.state = {
            showResolution:false,
            lock:false,
            resolution:'1080р'
         }
-    }
+                           }
     chooseResolution (res) {
         this.setState({
             showResolution:false,
             resolution:res
         });
         this.props.changeResContext(res.substr(0,res.length-1));
-                           }
-    changeSize(e) {
+                            }
+    changeSize(e)           {
         e.stopPropagation();
         this.props.changeSizeContext();
-    }
+                            }
     setLock(vl) {
-        this.setState      (
+        this.setState       (
             {
                 lock:!vl,
             }
-                           )
+                            )
     }
     render () {
         {if (this.state.showResolution === false) {

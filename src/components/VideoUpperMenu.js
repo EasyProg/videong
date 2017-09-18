@@ -1,5 +1,5 @@
 import React, { Component,PropTypes } from 'react';
-import {Button,Icon} from 'semantic-ui-react';
+import {Icon} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import pause from '../img/pause_button.png';
 import play from '../img/play-button.png';
@@ -21,14 +21,14 @@ class VideoUpperMenu extends Component {
         super(props);
         this.switchKeyPress = this.switchKeyPress.bind(this);
                         }
-    componentDidMount() {
+    componentDidMount()                     {
         var func = this.switchKeyPress;
         $('#video').focus();
         $('#video').keydown(function(event) {
             func(event);
                                             });
-                        }
-    switchKeyPress(event) {
+                                            }
+    switchKeyPress(event)      {
         switch (event.keyCode) {
             case 40:
                 this.switchChannel('prev');
@@ -36,8 +36,8 @@ class VideoUpperMenu extends Component {
             case 38:
                 this.switchChannel('next');
                 break;
-            case 37: {
-                if (!this.props.menus.channelsMenuVisible) {
+            case 37:                                           {
+                if (!this.props.menus.channelsMenuVisible)     {
                     this.props.dispatch(setChannelsVisible(
                         {
                             channelsMenuVisible: true,
@@ -45,7 +45,7 @@ class VideoUpperMenu extends Component {
                             settingsVisible: false
                         }
                     ))
-                }
+                                                               }
                 else if (this.props.menus.channelsMenuVisible) {
                     this.props.dispatch(setChannelsVisible(
                         {
@@ -54,22 +54,22 @@ class VideoUpperMenu extends Component {
                             settingsVisible: false
                         }
                     ))
-                }
+                                                               }
                 break;
-                     }
-            case 39: {
+                                                               }
+            case 39:                                           {
                 this.props.dispatch(setChannelsVisible(
                     {
-                        channelsMenuVisible: false,
-                        categoryMenuVisible: false,
-                        settingsVisible: true
+                            channelsMenuVisible: false,
+                            categoryMenuVisible: false,
+                            settingsVisible: true
                     }
                 ));
                 break;
-                     }
-            default:console.log('Fuck you!!!');
-        }
-    }
+                                                               }
+            default:break;
+                                }
+                          }
     switchChannel(param='next')     {
     var i = this.props.channels.map(x => x.channelId).indexOf(this.props.video.channelId);
     let isOver =  i+1<this.props.channels.length;
