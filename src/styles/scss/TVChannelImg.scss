@@ -1,0 +1,66 @@
+.tvimg      {
+  margin-right: 20px;
+  margin-top: 7px;
+            }
+//.shadow {
+//  height: 20px;
+//  width:200px;
+//  margin:20px auto;
+//  box-shadow:inset 0px -190px 190px -50px #add7f8;
+//}
+.pname       {
+  height: 60px;
+  position: absolute;
+  white-space:nowrap;
+  overflow: hidden;
+  width:210px;
+  //margin-bottom: 20px;
+             }
+.pnameShadow {
+  position: absolute;
+  left:90%;
+  height: 110%;
+  box-shadow: 10px 10px 70px 50px rgba(0,0,0,1);
+  z-index: 30;
+  //margin-bottom: 20px;
+             }
+
+.pnameFav {
+  position: relative;
+  left:190px;
+  top:-50%;
+  z-index: 33;
+  //margin-bottom: 20px;
+          }
+.rateContainer {
+  position: relative;
+  top:25px;
+  margin-right: 10px;
+  float: right;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:15px;
+  width:45px;
+  z-index: 31;
+               }
+.rateDivFilled  {
+  width: 7px;
+  height: 7px;
+  margin-right: 2px;
+  border-radius: 5px;
+  background: $main_color;
+          }
+.rateDivFilledChosen {
+  @extend .rateDivFilled;
+  background: white;
+}
+
+
+.rateDivEmpty  {
+  width: 7px;
+  height: 7px;
+  margin-right: 2px;
+  border-radius: 5px;
+  background: #686868;
+}
