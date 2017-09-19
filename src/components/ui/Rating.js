@@ -5,7 +5,8 @@ export default class Rating extends Component {
         super(props);
         this.fillElems = this.fillElems.bind(this);
                             }
-    propTypes = {
+static
+      propTypes = {
       rate : PropTypes.number.isRequired,
       maxRate: PropTypes.number.isRequired,
       chosen:  PropTypes.bool.isRequired

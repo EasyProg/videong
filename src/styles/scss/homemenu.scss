@@ -15,11 +15,11 @@
   text-align: center;
   color:white;
   position: absolute;
-  left:80%;
-  top:3%;
+  left:83%;
+  top:-15px;
   display: block;
   width:200%;
-  max-width:250px;
+  max-width:320px;
   min-width:200px;
   height: 570%;
   background: rgba(0,0,0,0.3);
@@ -62,14 +62,14 @@ hr {
 }
 .logoutButton {
   cursor:pointer;
-  font: 10px Comfortaa-Light bold;
+  font: 15px Comfortaa-Light bold;
   border-radius: 5px;
   margin-top: 10px;
   width: 140px;
   height: 35px;
   border: 1px solid grey;
-  background: none;
-  color:grey;
+  background: $main_color;
+  color:white;
 }
 .logoutButton:hover {
 color: #d7d7d7;

@@ -1,16 +1,16 @@
 @import 'variables';
 
 .categoryPanel {
-  top:0;
+  top:-20px;
   display:block;
-  width:10%;
-  max-width: 10%;
-  min-width: 5%;
+  width:15%;
+  max-width: 15%;
+  min-width: 10%;
   margin-top: 20px;
   position: absolute;
-  left:70px;
+  left:0;
   transition: left 0.5s ease 100ms;
-}
+              }
 .categoryLine {
   position: absolute;
   left:7%;
@@ -34,8 +34,8 @@ display:none;
 .categoryItem {
   display: block;
   cursor: pointer;
-  width:250px;
-  max-width: 250px;
+  width:320px;
+  max-width: 320px;
   min-width: 170px;
   background: rgba(0,0,0,0.7);
   font-family: "Comfortaa Light";

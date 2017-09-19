@@ -61,6 +61,7 @@ top:-15px;
 background: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
                  }
 
+
 .menuDives {
   height: 50px;
   //width:150px;
@@ -73,11 +74,19 @@ background: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
 .menuCenterText {
   letter-spacing: 2px;
   font-family: "Comfortaa Light";
-  font-weight: bold;
+  font-weight: normal;
   font-size:20px;
   color:white;
-  font-family: "Comfortaa Light";
-  font-weight: normal;
+                }
+.menuCenterTextBig {
+  @extend .menuCenterText;
+  font-size:30px;
+  margin-bottom: 10px;
+}
+.menuCenterTextBigBold {
+  @extend .menuCenterTextBig;
+  font-weight:bold;
+
 }
 
 .displayNone {

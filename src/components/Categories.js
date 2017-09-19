@@ -22,12 +22,13 @@ import 'semantic-ui-css/semantic.min.css';
 import  {connect} from 'react-redux';
 import  {bindActionCreators} from 'redux';
 import  {setChannelsVisible} from '../actions/actions';
-class Categories extends Component  {
+import * as $ from 'jquery';
+class   Categories extends Component  {
 constructor(props) {
     super(props);
     this.state = {
         itemChosen:'',
-        category:''
+        category:'All channels'
                  };
     this.filterChannels = this.filterChannels.bind(this);
                    }
@@ -35,7 +36,7 @@ constructor(props) {
     visible:PropTypes.bool.isRequired,
     channelVisible:PropTypes.bool.isRequired
                         };
-    handleClick (index,cat) {
+handleClick (index,cat)     {
        this.setState(
            {
             itemChosen:index,
@@ -45,10 +46,10 @@ constructor(props) {
        this.props.dispatch(setChannelsVisible (
             {
                 channelsMenuVisible:true,
-                categoryMenuVisible:false,
+                categoryMenuVisible:true,
                 settingsVisible:false
             }
-                                              ))
+                                              ));
                             }
     parse(arr) {
     var channels = [];
@@ -79,38 +80,57 @@ constructor(props) {
     return(channels);
                }
     Menu =     [
-    {name:'All',         src:all,       category:'All'},
+    {name:'All',         src:all,       category:'All channels'},
     {name:'Now watching',src:play,      category: 54},
     {name:'Favorites',   src:star,      category:'Любимые'},
     {name:'Blocked',     src:lock,      category:'Locked'},
-    {name:'TV Shows',    src:scene},
+    {name:'TV Shows',    src:scene,     category:'Shows'},
     {name:'Films',       src:film,      category:'Фильмы'},
     {name:'Music',       src:headphones,category:'Музыкальный'},
-    {name:'Popular',     src:mask},
-    {name:'3D / VR',     src:glasses},
-    {name:'Travel',      src:caravan},
+    {name:'Popular',     src:mask,      category:'Популярное'},
+    {name:'3D / VR',     src:glasses,   category:'3D'},
+    {name:'Travel',      src:caravan,   category:'Путешевствия'},
     {name:'Comedy',      src:masks,     category:'Развлекательный'}
                 ];
 filterChannels(channels)               {
-var cat = this.state.category?this.state.category.toString():'All';
+
+var cat = this.state.category?this.state.category.toString():'All channels';
 let filteredChannels = [];
 if (channels) {
      filteredChannels =  channels.filter(function(item)
      {
-     if (cat !=='All'&&cat !=='Любимые'&&cat !=='Locked'&&cat!=='undefined')
+     if (cat !=='All channels'&&cat !=='Любимые'&&cat !=='Locked'&&cat!=='undefined')
      return item.category.toUpperCase() === cat.toUpperCase();
      else return item.category
      })
               }
  return filteredChannels;
                                        };
+switchCateg(event,cat) {
+    var i = this.Menu.map(x => x.category).indexOf(cat);
+    console.log(i);
+    var nextElem = i + 1 >= this.Menu.length ? 0 : i + 1;
+    var prevElem = i - 1 < 0 ? this.Menu.length - 1 : i - 1;
+    //console.log(nextElem+'      '+prevElem);
+    switch (event.keyCode)  {
+        case 40:
+            this.handleClick(nextElem, this.Menu[nextElem].category);
+            break;
+        case 38:
+            this.handleClick(prevElem, this.Menu[prevElem].category);
+            break;
+        default:
+        $('#video').focus();
+                            }
+                        }
+
     render()   {
         return (
             <div>
-            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1}>
+            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories"   onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
                 {
                             this.Menu.map ((item,i)=>
-                            <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)}>
+                            <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)} tabIndex={1}>
                             <div         className="categoryImage"><img src={item.src} width="40" height="40"/></div>
                             <div         className="categoryText">
                             {item.name}

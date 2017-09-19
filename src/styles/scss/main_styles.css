@@ -31,8 +31,8 @@
 .menuChannel, .menuChannelLeft, .menuChannelNone {
   height: 600px;
   position: absolute;
-  top: 20px;
-  left: 60px;
+  top: 0;
+  left: 0;
   transition: left 0.5s ease 100ms; }
 
 .menuChannelLeft {
@@ -124,11 +124,11 @@ video::media-controls {
   text-align: center;
   color: white;
   position: absolute;
-  left: 80%;
-  top: 3%;
+  left: 83%;
+  top: -15px;
   display: block;
   width: 200%;
-  max-width: 250px;
+  max-width: 320px;
   min-width: 200px;
   height: 570%;
   background: rgba(0, 0, 0, 0.3);
@@ -175,14 +175,14 @@ hr {
 
 .logoutButton {
   cursor: pointer;
-  font: 10px Comfortaa-Light bold;
+  font: 15px Comfortaa-Light bold;
   border-radius: 5px;
   margin-top: 10px;
   width: 140px;
   height: 35px;
   border: 1px solid grey;
-  background: none;
-  color: grey; }
+  background: #8567ff;
+  color: white; }
 
 .logoutButton:hover {
   color: #d7d7d7;
@@ -342,14 +342,14 @@ hr {
   background: #434343; }
 
 .categoryPanel, .categoryPanelNone {
-  top: 0;
+  top: -20px;
   display: block;
-  width: 10%;
-  max-width: 10%;
-  min-width: 5%;
+  width: 15%;
+  max-width: 15%;
+  min-width: 10%;
   margin-top: 20px;
   position: absolute;
-  left: 70px;
+  left: 0;
   transition: left 0.5s ease 100ms; }
 
 .categoryLine, .categoryLineNone {
@@ -367,8 +367,8 @@ hr {
 .categoryItem, .categoryItemChosen {
   display: block;
   cursor: pointer;
-  width: 250px;
-  max-width: 250px;
+  width: 320px;
+  max-width: 320px;
   min-width: 170px;
   background: rgba(0, 0, 0, 0.7);
   font-family: "Comfortaa Light";
@@ -445,12 +445,12 @@ hr {
 
 .videoTime {
   cursor: default;
-  line-height: 3.4em;
+  line-height: 3em;
   margin-left: 20px;
   margin-right: 20px;
   height: 60px;
   width: 50px;
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-family: "RobotoRegular";
   color: white; }
 
@@ -588,14 +588,20 @@ hr {
   position: absolute;
   white-space: nowrap;
   overflow: hidden;
-  width: 210px; }
+  width: 170px; }
 
-.pnameShadow {
+.pnameShadow, .divShadow {
   position: absolute;
   left: 90%;
   height: 110%;
-  box-shadow: 10px 10px 70px 50px black;
   z-index: 30; }
+
+.divShadow {
+  background: -webkit-linear-gradient(bottom, rgba(47, 79, 79, 0), #2f4f4f 5em, #2f4f4f);
+  background: linear-gradient(0deg, rgba(47, 79, 79, 0), #2f4f4f 5em, #2f4f4f);
+  background-size: contain;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
 
 .pnameFav {
   position: relative;
@@ -612,13 +618,13 @@ hr {
   flex-direction: row;
   justify-content: space-between;
   height: 15px;
-  width: 45px;
+  width: 50px;
   z-index: 31; }
 
 .rateDivFilled, .rateDivFilledChosen {
   width: 7px;
   height: 7px;
-  margin-right: 2px;
+  margin-right: 3px;
   border-radius: 5px;
   background: #8567ff; }
 
@@ -753,14 +759,19 @@ body {
   height: 50px;
   display: flex; }
 
-.menuCenterText {
+.menuCenterText, .menuCenterTextBig, .menuCenterTextBigBold {
   letter-spacing: 2px;
   font-family: "Comfortaa Light";
-  font-weight: bold;
+  font-weight: normal;
   font-size: 20px;
-  color: white;
-  font-family: "Comfortaa Light";
-  font-weight: normal; }
+  color: white; }
+
+.menuCenterTextBig, .menuCenterTextBigBold {
+  font-size: 30px;
+  margin-bottom: 10px; }
+
+.menuCenterTextBigBold {
+  font-weight: bold; }
 
 .displayNone {
   display: none;

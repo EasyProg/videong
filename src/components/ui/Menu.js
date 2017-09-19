@@ -48,8 +48,9 @@ class Menu extends Component            {
                     channelVisible=     {this.props.menus.channelsMenuVisible}
                     toggleMenuStateContext={this.toggleMenuState}/>
                     <div className={this.props.fullScreen?"menuCenterText":'displayNone'}>
-                    {this.props.channelId}{'. '}{this.props.channel} {' / '} {this.props.category}
-                    <br/>А здесь должно быть название того что идет
+                        <div className="menuCenterTextBig">{this.props.category} {' < '}
+                        <span className="menuCenterTextBigBold">{this.props.channelId}{'. '}{this.props.channel}</span></div>
+                        <div>А здесь должно быть название того что идет</div>
                     </div>
                 </div>
                 <div className="menuDives">

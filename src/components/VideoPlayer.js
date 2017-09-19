@@ -38,7 +38,7 @@ class VideoPlayer extends Component                {
         this.handlePlay=this.handlePlay.bind(this);
         this.escFullScreen = this.escFullScreen.bind(this);
         this.state = {playerButtonsAppear:false};
-        this.timer = '';                           }
+        this.timer = '';                            }
         //Component Functions
         componentDidMount() {
         var vd = this.video.video;
@@ -52,54 +52,58 @@ class VideoPlayer extends Component                {
                                             });
         this.videoOnLoad();
                             }
-        componentWillUnmount() {
+        componentWillUnmount()  {
         this.vd.removeEndEventListener('timeupdate');
 
-                               }
+                                }
         toggle(isPlaying){
         var vd = this.video.video;
         //const vd = this.video;
         this.props.dispatch(togglePlay(isPlaying));
-        if (isPlaying) {
-             vd.play();
-        }
-        else vd.pause();
-                         }
-        changeRes(res)   {
-                         }
-        videoOnLoad()    {
-            var vd = document.getElementById('video');
-            if (navigator.userAgent.indexOf ('WOW64')!==-1) {
-                hls.loadSource(this.props.video.link);
-            }
-            else {hls.loadSource(this.props.video.link);}
-            hls.attachMedia(vd);
-            hls.on(Hls.Events.MANIFEST_PARSED,function ()   {
+        if (isPlaying)          {
             vd.play();
-                                                      });
-            if (vd)     {
-            vd.addEventListener('timeupdate', this.handleOnPlay);
-                        }
-                        }
+                                }
+        else vd.pause();
+                                }
+        changeRes(res)          {
+                                }
+        videoOnLoad() {
+            if (this.props.video) {
+                var vd = document.getElementById('video');
+                if (navigator.userAgent.indexOf ('WOW64') !== -1) {
+                hls.loadSource(this.props.video.link);
+                }
+                else {
+                hls.loadSource(this.props.video.link);
+                }
+                hls.attachMedia(vd);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                vd.play();
+                });
+                if (vd) {
+                vd.addEventListener('timeupdate', this.handleOnPlay);
+                }
+                                  }
+        }
         handleOnPlay()              {
         var vd = document.getElementById('video');
         //var vd =                    this.video.video;
         //console.log(vd.video);
-        const time =                vd.currentTime||0;
-        const duration =            vd.duration||100;
-        var currentTime =           document.getElementById('currentTime');
-        var durationTime =          document.getElementById('duration');
-        currentTime.innerText =     timeFormat(time);
-        durationTime.innerText   =  timeFormat(duration);
-        var progressBar =           document.getElementById('progress-bar');
-        var percentage =            Math.floor((100 / duration) * time);
-        progressBar.value     =     percentage;
-        progressBar.innerHTML =     percentage+'%';
+        const time              =  vd.currentTime||0;
+        const duration          =  vd.duration||100;
+        var currentTime         =  document.getElementById('currentTime');
+        var durationTime        =  document.getElementById('duration');
+        currentTime.innerText   =  timeFormat(time);
+        durationTime.innerText  =  timeFormat(duration);
+        var progressBar         =  document.getElementById('progress-bar');
+        var percentage          =  Math.floor((100 / duration) * time);
+        progressBar.value       =  percentage;
+        progressBar.innerHTML   =  percentage+'%';
                                     }
         handleCurrTime(param)       {
         var vd = this.video.video;
         if (param===1)
-        {vd.currentTime+=10; }
+        {vd.currentTime+=10;        }
         else vd.currentTime-=10;
                                     }
         handleCurrPlayback (param)  {
@@ -113,6 +117,7 @@ class VideoPlayer extends Component                {
         //Скрыть плей
         $("#vduppermenu,#vdbottommenu").fadeOut(1000);
         },5000);
+        //$('#video').focus();
         // if (!this.props.menus.categoryMenuVisible&&!this.props.menus.channelsMenuVisible) {
         //     $('#video').focus();
         //     }
@@ -125,14 +130,12 @@ class VideoPlayer extends Component                {
         //Запустить скрытие
         this.handlePlay();
         }
-        escFullScreen()                           {
-         if  (!document.fullscreenElement
-             && !document.mozFullScreenElement
-             && !document.webkitFullscreenElement
-             && !document.msRequestFullscreen)
-             this.props.dispatch(toggleFullScreen(false));
-             $("#vduppermenu,#vdbottommenu,#menu").fadeIn(100);
-         }
+         escFullScreen(event)                      {
+         console.log('sdsdsdsdsdsds   '+event.keyCode);
+         if  (event.keyCode===27)
+         this.props.dispatch(toggleFullScreen(false));
+         //$("#vduppermenu,#vdbottommenu,#menu").fadeIn(100);
+                                                  }
 
 
 
@@ -162,15 +165,20 @@ class VideoPlayer extends Component                {
             this.props.dispatch(toggleFullScreen(true));
                                                   }
         else                                      {
-            alert('Your browsers doesn\'t support fullscreen');
+        alert('Your browsers doesn\'t support fullscreen');
                                                   }
-        this.props.dispatch(setChannelsVisible(
-                {
-                    channelsMenuVisible: false,
-                    categoryMenuVisible: false,
-                    settingsVisible: false
-                }
-            ))
+        var c = this;
+        $('#video').focus();
+        $('#video').keydown(
+                function(event){
+                c.escFullScreen(event)});
+        // this.props.dispatch(setChannelsVisible(
+        //         {
+        //             channelsMenuVisible: false,
+        //             categoryMenuVisible: false,
+        //             settingsVisible: false
+        //         }
+        //     ))
         }
         //from fullScreen to Normal
         else                                      {
@@ -188,15 +196,15 @@ class VideoPlayer extends Component                {
 
                                                    }}
         //Component Functions
-        render() {
+        render()        {
             this.videoOnLoad();
             return (
-                <div                 ref={(dv)=>this.div=dv} className="centerDiv">
+                        <div         ref={(dv)=>this.div=dv} className="centerDiv">
                         <Video       isPlaying={this.props.isPlaying}
                                      fullSize= {this.props.fullScreen}
                                      video=    {this.props.video}
                                      ref=      {(video)=>this.video=video}
-                    />
+                        />
                         <VideoUpperMenu  isPlaying={this.props.isPlaying}
                                          toggleContext={this.toggle}
                                          handleOnPlayContext={this.handleOnPlay}
@@ -204,10 +212,10 @@ class VideoPlayer extends Component                {
                                          handleCurrPlaybackContext={this.handleCurrPlayback}/>
                         <VideoBottomMenu changeSizeContext={this.changeSize}
                                          changeResContext= {this.changeRes}/>
-                    <div id="processDiv" className="displayNone"/>
-                </div>
-                    )
-                }
+                        <div id="processDiv" className="displayNone"/>
+                        </div>
+                        )
+                       }
                                                     }
                        const mapDispatchToProps = (dispatch) => bindActionCreators({
                        dispatch,togglePlay,toggleButtons,toggleFullScreen,setChannelsVisible
@@ -218,7 +226,7 @@ class VideoPlayer extends Component                {
                        isPlaying:            state.videoReducer.isPlaying,
                        fullScreen:           state.videoReducer.fullScreen,
                        autoPlay:             state.videoReducer.autoPlay,
-                       menus:                state.menuReducer.menus
+                       //menus:                state.menuReducer.menus
                        }),
                        mapDispatchToProps
                                                     )(VideoPlayer);

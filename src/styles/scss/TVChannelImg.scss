@@ -13,17 +13,25 @@
   position: absolute;
   white-space:nowrap;
   overflow: hidden;
-  width:210px;
+  width:170px;
   //margin-bottom: 20px;
              }
 .pnameShadow {
   position: absolute;
   left:90%;
   height: 110%;
-  box-shadow: 10px 10px 70px 50px rgba(0,0,0,1);
+  //box-shadow: 10px 10px 70px 50px rgba(0,0,0,0.7);
   z-index: 30;
-  //margin-bottom: 20px;
              }
+
+.divShadow {
+  @extend .pnameShadow;
+  background: -webkit-linear-gradient(bottom, rgba(47, 79, 79, 0), #2f4f4f 5em, #2f4f4f);
+  background: linear-gradient(0deg, rgba(47, 79, 79, 0), #2f4f4f 5em, #2f4f4f);
+  background-size: contain;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .pnameFav {
   position: relative;
@@ -41,13 +49,13 @@
   flex-direction: row;
   justify-content: space-between;
   height:15px;
-  width:45px;
+  width:50px;
   z-index: 31;
                }
 .rateDivFilled  {
   width: 7px;
   height: 7px;
-  margin-right: 2px;
+  margin-right: 3px;
   border-radius: 5px;
   background: $main_color;
           }

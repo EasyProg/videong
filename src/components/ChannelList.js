@@ -5,6 +5,7 @@ import {changeVideo,toggleCategory,togglePlay,getChannels,setChannelsVisible} fr
 import {Button} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/css/main_styles.css';
+import * as $ from 'jquery';
 //import '../components/Channel';
 import Channel from './Channel';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -32,6 +33,17 @@ this.props.dispatch(setChannelsVisible({
 //this.props.visibleSetContext('left');
 //Set UI
                                       }
+
+componentDidMount(){
+//$('channels').focus();
+$('#channels').keydown(function(event){
+ this.categoryElemSwitch(event);
+});
+                   }
+
+componentWillReceiveProps()  {
+//;this.props.dispatch(getChannels(this.props.playList));
+                             }
 render(){
 this.props.dispatch(getChannels(this.props.playList));
 return         (
