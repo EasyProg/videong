@@ -12,13 +12,13 @@ export default class Video extends Component    {
     isPlaying:PropTypes.bool.isRequired,
     video:    PropTypes.object.isRequired
                        };
-    shouldComponentUpdate(nextProps,nextState)  {
+    // shouldComponentUpdate(nextProps,nextState)  {
     // console.log(nextProps.fullSize+'     '+this.props.fullSize);
     // if         (nextProps.fullSize!==this.props.fullSize)
     // return false;
     // else return true
-
-                                                }
+    //
+    //                                             }
     render() {
         console.log('Render');
         return (
