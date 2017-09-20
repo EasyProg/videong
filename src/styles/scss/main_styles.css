@@ -671,6 +671,7 @@ hr {
   background: #686868; }
 
 .archDiv {
+  top: 10px;
   background: white;
   text-align: center;
   color: white;
@@ -739,7 +740,7 @@ hr {
 
 .archItemDiv:hover {
   cursor: pointer;
-  background: #353535; }
+  background: #545454; }
 
 .ImagDiv {
   width: 100px; }

@@ -1,4 +1,5 @@
 .archDiv {
+  top:10px;
   background: white;
   text-align: center;
   color:white;
@@ -77,7 +78,7 @@
 .archItemDiv:hover {
   @extend .archItemDiv;
   cursor: pointer;
-  background: #353535;
+  background: #545454;
 }
 .ImagDiv {
   width:100px;
