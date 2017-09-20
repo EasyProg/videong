@@ -8,6 +8,7 @@ import '../../styles/css/main_styles.css';
 import Categories from '../Categories';
 import HomeMenu from '../HomeMenu';
 import home from '../../img/hm.png';
+import menu from '../../img/main_menu.gif';
 import * as $ from 'jquery';
 class Menu extends Component            {
     constructor(props) {
@@ -42,7 +43,8 @@ class Menu extends Component            {
                 <div className="menuDives">
                     <div className="divSideBar"
                          onClick={(e) => this.toggleMenuState()}>
-                         <Icon className="big inverted sidebar"/>
+                    <img src={menu} height={45} width={30}/>
+                         {/*<Icon className="big inverted sidebar"/>*/}
                     </div>
                     <Categories visible={this.props.menus.categoryMenuVisible}
                     channelVisible=     {this.props.menus.channelsMenuVisible}

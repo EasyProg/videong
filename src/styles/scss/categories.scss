@@ -10,7 +10,7 @@
   position: absolute;
   left:0;
   transition: left 0.5s ease 100ms;
-              }
+               }
 .categoryLine {
   position: absolute;
   left:7%;
@@ -34,8 +34,8 @@ display:none;
 .categoryItem {
   display: block;
   cursor: pointer;
-  width:320px;
-  max-width: 320px;
+  width:$menuItemWidth;
+  max-width:$menuItemWidth;
   min-width: 170px;
   background: rgba(0,0,0,0.7);
   font-family: "Comfortaa Light";
@@ -45,6 +45,37 @@ display:none;
   line-height: 4em;
   text-align: center;
 }
+.menuHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  width:$menuItemWidth;
+  max-width: $menuItemWidth;
+  min-width: 170px;
+  background: rgba(0,0,0,0.7);
+  font-family: "Comfortaa Light";
+  font-weight: normal;
+  color:white;
+  line-height: 6em;
+  text-align: center;
+  height: 80px;
+}
+.menuHeaderCh {
+  @extend .menuHeader;
+  width:320px;
+  max-width: 320px;
+}
+.menuHeaderCircleDiv {
+  background: #4a4a4a;
+  border-radius: 45px;
+  width: 45px;
+  height: 45px;
+  margin-left: 20px;
+  margin-right:20px;
+  line-height: 4em;
+  text-align: center;
+                     }
 .categoryItem:hover {
   background: #4a4a4a;
   filter:progid:DXImageTransform.Microsoft.Blur(10px);

@@ -12,6 +12,7 @@ import underline from '../img/Underline.png';
 import play from '../img/play-categ.png';
 import lock from '../img/lock.png';
 import all from '../img/crowd-of-users.png';
+import point from '../img/pointing-to-left.gif'
 //import elements
 import {Icon} from 'semantic-ui-react';
 import ChannelList from '../components/ChannelList';
@@ -108,7 +109,6 @@ if (channels) {
                                        };
 switchCateg(event,cat) {
     var i = this.Menu.map(x => x.category).indexOf(cat);
-    console.log(i);
     var nextElem = i + 1 >= this.Menu.length ? 0 : i + 1;
     var prevElem = i - 1 < 0 ? this.Menu.length - 1 : i - 1;
     //console.log(nextElem+'      '+prevElem);
@@ -128,6 +128,7 @@ switchCateg(event,cat) {
         return (
             <div>
             <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories"   onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
+            {/*<div className="menuHeader"><div className="menuHeaderCircleDiv"><img src={point} width={20} height={20}/></div>{this.state.category}</div>*/}
                 {
                             this.Menu.map ((item,i)=>
                             <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)} tabIndex={1}>

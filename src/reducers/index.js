@@ -27,17 +27,15 @@ const  menuState =     {
 function videoReducer(state=initialState,action=null)           {
     switch (action.type) {
         case 'CHANGE':
-            return {...state,video:action.video||state.video};
+        return {...state,video:action.video||state.video};
         case 'TOGGLE_PLAY':
         return {...state,isPlaying:action.isPlaying};
         case 'TOGGLE_AUTO_PLAY':
-            return {...state,autoPlay:action.autoPlay};
+        return {...state,autoPlay:action.autoPlay};
         case 'TOGGLE_BUTTONS':
-            return {...state,isControlElemsVisible:action.isControlElemsVisible};
+        return {...state,isControlElemsVisible:action.isControlElemsVisible};
         case 'TOGGLE_FULLSCREEN':
-            return {...state,fullScreen:action.fullScreen};
-        // case 'TOGGLE_CATEGORY':
-        //     return {...state,channelCategory:action.category};
+        return {...state,fullScreen:action.fullScreen};
         default:
         return state;
                         }

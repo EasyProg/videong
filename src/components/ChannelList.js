@@ -6,6 +6,7 @@ import {Button} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/css/main_styles.css';
 import * as $ from 'jquery';
+import point from '../img/pointing-to-left.gif'
 //import '../components/Channel';
 import Channel from './Channel';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -21,7 +22,13 @@ category:   PropTypes.string.isRequired,
 visibility: PropTypes.bool.isRequired,
 visibleSetContext:PropTypes.func.isRequired
 };
-handleClick (elem)                    {
+handleKey(e,elem) {
+    if (e.keyCode===13)
+    {
+        this.handleClick (elem);
+    }
+                }
+handleClick (e,elem)                    {
 this.props.dispatch(changeVideo(elem));
 this.props.dispatch(toggleCategory(elem.category));
 this.props.dispatch(togglePlay(!this.props.autoPlay));
@@ -32,7 +39,7 @@ this.props.dispatch(setChannelsVisible({
 }));
 //this.props.visibleSetContext('left');
 //Set UI
-                                      }
+                                         }
 
 componentDidMount(){
 //$('channels').focus();
@@ -49,6 +56,7 @@ this.props.dispatch(getChannels(this.props.playList));
 return         (
                <div>
                <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick} id="channels">
+                   {this.props.playList.length?<div className="menuHeaderCh"><div className="menuHeaderCircleDiv"><img src={point} width={20} height={20}/></div>{this.props.channelCategory}</div>:''}
                <PerfectScrollbar>
                {this.props.playList.map((elem, i) =>
                             <Channel
@@ -58,7 +66,9 @@ return         (
                             programName     =   {elem.channel}
                             favorite        =   {this.props.category==='Любимые'}
                             chosen          =   {elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
-                            onClick         =   {e=>this.handleClick(elem)}/>
+                            onClick         =   {e=>this.handleClick(elem)}
+                            onKeyDown       =   {(e)=>this.handleKey(e,elem)}
+                            />
                )
                }
                </PerfectScrollbar>

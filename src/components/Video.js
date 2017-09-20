@@ -1,9 +1,9 @@
 import  React, {Component,PropTypes} from 'react';
-import       '../styles/css/main_styles.css';
+import  '../styles/css/main_styles.css';
 import  {connect} from 'react-redux';
 
 
-export default class Video extends Component {
+export default class Video extends Component    {
     constructor(props) {
     super(props);
                        }
@@ -13,14 +13,10 @@ export default class Video extends Component {
     video:    PropTypes.object.isRequired
                        };
     shouldComponentUpdate(nextProps,nextState)  {
-    console.log(nextProps.fullSize+'  '+this.props.fullSize);
-    if         (nextProps.fullSize!==   this.props.fullSize//||nextProps.isPlaying!==this.props.isPlaying
-    //|| nextProps.video.channelId!==this.props.video.channelId
-               )
-    {
-        return false}
-    else {
-        return true}
+    // console.log(nextProps.fullSize+'     '+this.props.fullSize);
+    // if         (nextProps.fullSize!==this.props.fullSize)
+    // return false;
+    // else return true
 
                                                 }
     render() {
@@ -34,6 +30,6 @@ export default class Video extends Component {
                         </div>
                )
              }
-                                            }
+                                                }
 
 //Merge request to master project

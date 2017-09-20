@@ -21,7 +21,7 @@ export default class Channel extends Component {
                        };
     render() {
         return (
-                <div    className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick}>
+                <div    className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick} onKeyDown={this.props.onKeyDown}>
                         <span className="span">{this.props.channelId}</span>
                         <img  width={40} height={40} src={this.props.hiddenChannel?hiddenchannel:nochannel} className="tvimg"/>
                         <span className="pname">

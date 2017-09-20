@@ -32,7 +32,7 @@ $menu-width:250px;
   visibility: hidden;
 }
 .menuChannel {
-  height:600px;
+  height:800px;
   position: absolute;
   top:0;
   left:0;
@@ -40,7 +40,7 @@ $menu-width:250px;
              }
 .menuChannelLeft {
   @extend .menuChannel;
-  left:320px;
+  left:270px;
 }
 .menuChannelNone {
   @extend .menuChannel;
@@ -50,6 +50,7 @@ $menu-width:250px;
   //position:absolute;
   //text-align: center;
   line-height: 2.8em;
+  margin-top: 15px;
   margin-left: 50px;
   text-align: center;
   width:45px;

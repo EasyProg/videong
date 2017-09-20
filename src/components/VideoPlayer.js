@@ -17,9 +17,15 @@ var proxy = 'https://cors-anywhere.herokuapp.com/';
 var timeFormat = function(seconds)  {
     var m = Math.floor(seconds/60)<10 ? "0"+Math.floor(seconds/60) : Math.floor(seconds/60);
     var s = Math.floor(seconds-(m*60))<10 ? "0"+Math.floor(seconds-(m*60)) : Math.floor(seconds-(m*60));
-    if (m&&s)
+    var h = Math.floor(m/60)<10 ? "0"+Math.floor(m/60) : Math.floor(m/60);
+    if (m&&s&&h==='00')
     return m+":"+s;
-    else return '00:00'
+    else if (m&&s&&h!=='00')
+    return   h+':'+m+":"+s;
+    else return  '00:00'
+    // if (m&&s)
+    // return m+":"+s;
+    // else return '00:00'
                                     };
 //window.$ = window.JQuery = JQuery;
 const hls = new Hls();
@@ -117,10 +123,6 @@ class VideoPlayer extends Component                {
         //Скрыть плей
         $("#vduppermenu,#vdbottommenu").fadeOut(1000);
         },5000);
-        //$('#video').focus();
-        // if (!this.props.menus.categoryMenuVisible&&!this.props.menus.channelsMenuVisible) {
-        //     $('#video').focus();
-        //     }
                                                     }
         menuFullScreenAppears()
         {
@@ -130,14 +132,13 @@ class VideoPlayer extends Component                {
         //Запустить скрытие
         this.handlePlay();
         }
-         escFullScreen(event)                      {
-         console.log('sdsdsdsdsdsds   '+event.keyCode);
-         if  (event.keyCode===27)
-         this.props.dispatch(toggleFullScreen(false));
-         //$("#vduppermenu,#vdbottommenu,#menu").fadeIn(100);
+        escFullScreen()                           {
+        if (   !document.fullscreenElement
+            && !document.mozFullScreenElement
+            && !document.webkitFullscreenElement
+            && !document.msRequestFullscreen)
+        this.props.dispatch(toggleFullScreen(false));
                                                   }
-
-
 
         changeSize()                              {
         var    vd = this.video.video;
@@ -165,26 +166,15 @@ class VideoPlayer extends Component                {
             this.props.dispatch(toggleFullScreen(true));
                                                   }
         else                                      {
-        alert('Your browsers doesn\'t support fullscreen');
+        //alert('Your browsers doesn\'t support fullscreen');
                                                   }
-        var c = this;
-        $('#video').focus();
-        $('#video').keydown(
-                function(event){
-                c.escFullScreen(event)});
-        // this.props.dispatch(setChannelsVisible(
-        //         {
-        //             channelsMenuVisible: false,
-        //             categoryMenuVisible: false,
-        //             settingsVisible: false
-        //         }
-        //     ))
+        document.addEventListener ("webkitfullscreenchange", this.escFullScreen, false);
         }
         //from fullScreen to Normal
         else                                      {
           if        (document.cancelFullScreen)
         {
-                    document.cancelFullScreen();
+                     document.cancelFullScreen();
         } else if   (document.mozCancelFullScreen)
         {
                     document.mozCancelFullScreen();
@@ -214,7 +204,7 @@ class VideoPlayer extends Component                {
                                          changeResContext= {this.changeRes}/>
                         <div id="processDiv" className="displayNone"/>
                         </div>
-                        )
+                   )
                        }
                                                     }
                        const mapDispatchToProps = (dispatch) => bindActionCreators({
@@ -224,7 +214,7 @@ class VideoPlayer extends Component                {
                        state => ({
                        video:                state.videoReducer.video,
                        isPlaying:            state.videoReducer.isPlaying,
-                       fullScreen:           state.videoReducer.fullScreen,
+                       //fullScreen:           state.videoReducer.fullScreen,
                        autoPlay:             state.videoReducer.autoPlay,
                        //menus:                state.menuReducer.menus
                        }),

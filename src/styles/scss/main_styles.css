@@ -29,20 +29,21 @@
   visibility: hidden; }
 
 .menuChannel, .menuChannelLeft, .menuChannelNone {
-  height: 600px;
+  height: 800px;
   position: absolute;
   top: 0;
   left: 0;
   transition: left 0.5s ease 100ms; }
 
 .menuChannelLeft {
-  left: 320px; }
+  left: 270px; }
 
 .menuChannelNone {
   left: -500px; }
 
 .divSideBar, .divSideBar:hover {
   line-height: 2.8em;
+  margin-top: 15px;
   margin-left: 50px;
   text-align: center;
   width: 45px;
@@ -113,7 +114,8 @@ video::media-controls {
   height: 45px;
   margin-right: 50px;
   text-align: center;
-  line-height: 2.8em; }
+  line-height: 2.8em;
+  margin-top: 15px; }
 
 .homeButton:hover {
   cursor: pointer;
@@ -270,7 +272,7 @@ hr {
   position: relative;
   width: 90%;
   margin: 10px;
-  height: 40px;
+  height: 50px;
   background: #8567ff;
   color: white;
   font-family: "Comfortaa Light";
@@ -367,14 +369,44 @@ hr {
 .categoryItem, .categoryItemChosen {
   display: block;
   cursor: pointer;
-  width: 320px;
-  max-width: 320px;
+  width: 270px;
+  max-width: 270px;
   min-width: 170px;
   background: rgba(0, 0, 0, 0.7);
   font-family: "Comfortaa Light";
   font-weight: normal;
   color: white;
   height: 60px;
+  line-height: 4em;
+  text-align: center; }
+
+.menuHeader, .menuHeaderCh {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  width: 270px;
+  max-width: 270px;
+  min-width: 170px;
+  background: rgba(0, 0, 0, 0.7);
+  font-family: "Comfortaa Light";
+  font-weight: normal;
+  color: white;
+  line-height: 6em;
+  text-align: center;
+  height: 80px; }
+
+.menuHeaderCh {
+  width: 320px;
+  max-width: 320px; }
+
+.menuHeaderCircleDiv {
+  background: #4a4a4a;
+  border-radius: 45px;
+  width: 45px;
+  height: 45px;
+  margin-left: 20px;
+  margin-right: 20px;
   line-height: 4em;
   text-align: center; }
 
@@ -681,7 +713,7 @@ hr {
   border-radius: 5px;
   border: 2px solid grey;
   width: 50px;
-  height: 35px;
+  height: 40px;
   line-height: 3.3em; }
 
 .buttonDiv:hover {
@@ -740,7 +772,7 @@ body {
   transition: width 1s ease 1s; }
 
 .mainMenuDiv, .mainMenuDivFull {
-  top: 0;
+  top: -20px;
   margin-top: 15px;
   position: fixed;
   width: 100%;

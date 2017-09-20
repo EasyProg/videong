@@ -6,28 +6,29 @@ import play from '../img/play-button.png';
 import '../styles/css/main_styles.css';
 import  {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeVideo,toggleCategory,setChannelsVisible} from '../actions/actions';
+import {changeVideo,toggleCategory,setChannelsVisible,toggleFullScreen} from '../actions/actions';
 import * as $ from 'jquery';
-class VideoUpperMenu extends Component      {
+class VideoUpperMenu extends Component                         {
         static propTypes = {
         toggleContext:PropTypes.func.isRequired,
         handleOnPlayContext:PropTypes.func.isRequred,
         handleCurrentTimeContext:PropTypes.func.isRequred,
         handleCurrPlaybackContext:PropTypes.func.isRequred,
         isPlaying:PropTypes.bool.isRequired
-                            };
+                           };
     //Constructor of the class
     constructor(props)  {
         super(props);
         this.switchKeyPress = this.switchKeyPress.bind(this);
                         }
-    componentDidMount()                     {
+    componentDidMount()                                        {
         var func = this.switchKeyPress;
         var t = this;
         $('#video').focus();
-        $('#video').keydown(function(event) {
+        $('#video').keydown(function(event)                    {
+            //event.preventDefault();
             func(event);
-                                            });
+                                                               });
         $('#video').click(
                function() {
                 t.props.dispatch(setChannelsVisible(
@@ -39,9 +40,9 @@ class VideoUpperMenu extends Component      {
                 this.focus();
             }
                         )
-                                            }
-    switchKeyPress(event)      {
-        switch (event.keyCode) {
+                                                               }
+    switchKeyPress(event)                                      {
+        switch (event.keyCode)                                 {
             case 40:
                 this.switchChannel('prev');
                 break;
@@ -83,28 +84,28 @@ class VideoUpperMenu extends Component      {
             default:break;
                                                                }
                                                                }
-    switchChannel(param='next')     {
+    switchChannel(param='next')                                {
     var i = this.props.channels.map(x => x.channelId).indexOf(this.props.video.channelId);
     let isOver =  i+1<this.props.channels.length;
     let isPos  =  i-1>=0;
     var nextElem = this.props.channels[i+1];
     var prevElem = this.props.channels[i-1];
-    if (param==='next')             {
+    if (param==='next')                                         {
         if (!isOver) nextElem = this.props.channels[0];
         if (nextElem)
         {
             this.props.dispatch(changeVideo(nextElem));
             this.props.dispatch(toggleCategory(nextElem.category));
         }
-                                    }
-    if (param==='prev'&&prevElem)   {
+                                                                }
+    if (param==='prev'&&prevElem)                               {
         if (!isPos) prevElem = this.props.channels[this.props.channels.length - 1];
-        if (prevElem)               {
+        if (prevElem)                                           {
             this.props.dispatch(changeVideo(prevElem));
             this.props.dispatch(toggleCategory(prevElem.category));
-                                    }
-                                    }
-                                    }
+                                                                }
+                                                                }
+                                                                }
     render() {
          return (       <div id="vduppermenu" onKeyDown={(e)=>this.switchKeyPress(e)} tabIndex={1} className="displayNone">
                         <progress id='progress-bar' min='0' max='100' value='0' className='progressBar'>0% played</progress>
@@ -122,9 +123,9 @@ class VideoUpperMenu extends Component      {
                         </div>
                 )
              }
-                                       }
+                                                                }
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-dispatch,changeVideo,toggleCategory,setChannelsVisible
+dispatch,changeVideo,toggleCategory,setChannelsVisible,toggleFullScreen
 }, dispatch);
 export default connect (
     state => ({fullScreen:state.videoReducer.fullScreen,
