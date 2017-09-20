@@ -22,13 +22,13 @@ category:   PropTypes.string.isRequired,
 visibility: PropTypes.bool.isRequired,
 visibleSetContext:PropTypes.func.isRequired
 };
-handleKey(e,elem) {
+handleKey(elem,e) {
     if (e.keyCode===13)
     {
         this.handleClick (elem);
     }
                 }
-handleClick (e,elem)                    {
+handleClick (elem)                    {
 this.props.dispatch(changeVideo(elem));
 this.props.dispatch(toggleCategory(elem.category));
 this.props.dispatch(togglePlay(!this.props.autoPlay));
@@ -67,7 +67,7 @@ return         (
                             favorite        =   {this.props.category==='Любимые'}
                             chosen          =   {elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
                             onClick         =   {e=>this.handleClick(elem)}
-                            onKeyDown       =   {(e)=>this.handleKey(e,elem)}
+                            onKeyDown       =   {(e)=>this.handleKey(elem,e)}
                             />
                )
                }
