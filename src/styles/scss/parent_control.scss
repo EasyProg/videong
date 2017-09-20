@@ -12,7 +12,7 @@
   align-items: center;
 }
 .divInput:hover {
-  border:1px solid blueviolet;
+  border:1px solid $main_color;
   cursor:pointer;
 }
 
@@ -38,7 +38,7 @@
   width:100%;
   margin:10px;
   height:40px;
-  background: blueviolet;
+  background: $main_color;
   color:      white;
   font-family: "Comfortaa Light";
   text-align: center;

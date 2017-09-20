@@ -5,7 +5,8 @@ export default class Rating extends Component {
         super(props);
         this.fillElems = this.fillElems.bind(this);
                             }
-    propTypes = {
+static
+      propTypes = {
       rate : PropTypes.number.isRequired,
       maxRate: PropTypes.number.isRequired,
       chosen:  PropTypes.bool.isRequired
@@ -23,10 +24,13 @@ export default class Rating extends Component {
             <span className="rateContainer">
                 {
                     this.starArr.map((elem,i)=>
-                    <div key={i} className={this.props.rate>i&&!this.props.chosen?'rateDivFilled':this.props.rate>i&&this.props.chosen?'rateDivFilledChosen':'rateDivEmpty'}/>)
+                    <div key={i}
+                    className={this.props.rate>i&&!this.props.chosen?
+                        'rateDivFilled':this.props.rate>i&&this.props.chosen?
+                        'rateDivFilledChosen':'rateDivEmpty'}/>)
 
                 }
             </span>
                 )
                            }
-}
+                                             }

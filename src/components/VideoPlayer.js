@@ -4,28 +4,36 @@ import  {ReactTransitionGroup} from 'react-transition-group';
 //import own components
 import  VideoBottomMenu from '../components/VideoBottomMenu';
 import  VideoUpperMenu from '../components/VideoUpperMenu'  ;
+import  Video from '../components/Video';
 import  Hls from 'hls.js';
 //import Event Listener
 import {bindActionCreators} from 'redux';
-import {togglePlay,toggleButtons,toggleFullScreen} from '../actions/actions';
+import {togglePlay,toggleButtons,toggleFullScreen,setChannelsVisible} from '../actions/actions';
 import * as $ from 'jquery';
 //import css//
 //import 'semantic-ui-css/semantic.min.css'//;
 import '../styles/css/main_styles.css';
-//var proxy = 'https://cors-anywhere.herokuapp.com/';
+var proxy = 'https://cors-anywhere.herokuapp.com/';
 var timeFormat = function(seconds)  {
     var m = Math.floor(seconds/60)<10 ? "0"+Math.floor(seconds/60) : Math.floor(seconds/60);
     var s = Math.floor(seconds-(m*60))<10 ? "0"+Math.floor(seconds-(m*60)) : Math.floor(seconds-(m*60));
-    if (m&&s)
+    var h = Math.floor(m/60)<10 ? "0"+Math.floor(m/60) : Math.floor(m/60);
+    if (m&&s&&h==='00')
     return m+":"+s;
-    else return '00:00'
+    else if (m&&s&&h!=='00')
+    return   h+':'+m+":"+s;
+    else return  '00:00'
+    // if (m&&s)
+    // return m+":"+s;
+    // else return '00:00'
                                     };
 //window.$ = window.JQuery = JQuery;
 const hls = new Hls();
-class VideoPlayer extends Component                 {
-
-constructor(props)                                  {
+class VideoPlayer extends Component                {
+        //vd = this.video?this.video.video:'';
+        constructor(props)                         {
         super(props);
+        //Bind functions
         this.handleOnPlay = this.handleOnPlay.bind(this);
         this.changeSize = this.changeSize.bind(this);
         this.changeRes = this.changeRes.bind(this);
@@ -36,76 +44,86 @@ constructor(props)                                  {
         this.handlePlay=this.handlePlay.bind(this);
         this.escFullScreen = this.escFullScreen.bind(this);
         this.state = {playerButtonsAppear:false};
-        this.timer = '';
-                                                    }
-//Component Functions
-        shouldComponentUpdate(nextProps,nextState)  {
-        if (nextProps.fullScreen!==this.props.fullScreen
-            )
-        {return false}
-        else return true                            }
+        this.timer = '';                            }
+        //Component Functions
         componentDidMount() {
+        var vd = this.video.video;
+        var appearsVideo = this.menuFullScreenAppears;
+        vd.addEventListener('mousemove',this.menuFullScreenAppears);
+        $('#video').keydown(function(event) {
+            if (event.keyCode===13)
+            {
+            appearsVideo();
+            }
+                                            });
         this.videoOnLoad();
                             }
-        componentWillUnmount() {
-        const vd = this.video;
-        vd.removeEndEventListener('timeupdate');
+        componentWillUnmount()  {
+        this.vd.removeEndEventListener('timeupdate');
+
                                 }
-        toggle(isPlaying) {
-        const vd = this.video;
+        toggle(isPlaying){
+        var vd = this.video.video;
+        //const vd = this.video;
         this.props.dispatch(togglePlay(isPlaying));
-        if (isPlaying) {
+        if (isPlaying)          {
             vd.play();
-        }
+                                }
         else vd.pause();
-        }
-        changeRes(res) {
-        var videoSets = this.video
-        }
+                                }
+        changeRes(res)          {
+                                }
         videoOnLoad() {
-        const video = document.getElementById('video');
-        if (navigator.userAgent.indexOf('WOW64')!==-1) {
-            hls.loadSource(this.props.video.videoStr);
+            if (this.props.video) {
+                var vd = document.getElementById('video');
+                if (navigator.userAgent.indexOf ('WOW64') !== -1) {
+                hls.loadSource(this.props.video.link);
+                }
+                else {
+                hls.loadSource(this.props.video.link);
+                }
+                hls.attachMedia(vd);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                vd.play();
+                });
+                if (vd) {
+                vd.addEventListener('timeupdate', this.handleOnPlay);
+                }
+                                  }
         }
-        else {hls.loadSource(this.props.video.videoStr);}
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED,function () {
-            video.play(); 
-                                                      });
-        if (video)  {
-            video.addEventListener('timeupdate', this.handleOnPlay);
-                    }
-                    }
-        handleOnPlay() {
-        var videoSets = this.video;
-        const time = videoSets.currentTime||0;
-        const duration = videoSets.duration||100;
-        var currentTime = document.getElementById('currentTime');
-        var durationTime = document.getElementById('duration');
-        currentTime.innerText = timeFormat(time);
-        durationTime.innerText   = timeFormat(duration);
-        var progressBar = document.getElementById('progress-bar');
-        var percentage = Math.floor((100 / duration) * time);
-        progressBar.value     = percentage;
-        progressBar.innerHTML = percentage+'%';
-                        }
+        handleOnPlay()              {
+        var vd = document.getElementById('video');
+        //var vd =                    this.video.video;
+        //console.log(vd.video);
+        const time              =  vd.currentTime||0;
+        const duration          =  vd.duration||100;
+        var currentTime         =  document.getElementById('currentTime');
+        var durationTime        =  document.getElementById('duration');
+        currentTime.innerText   =  timeFormat(time);
+        durationTime.innerText  =  timeFormat(duration);
+        var progressBar         =  document.getElementById('progress-bar');
+        var percentage          =  Math.floor((100 / duration) * time);
+        progressBar.value       =  percentage;
+        progressBar.innerHTML   =  percentage+'%';
+                                    }
         handleCurrTime(param)       {
-        var videoSets = this.video;
+        var vd = this.video.video;
         if (param===1)
-        {videoSets.currentTime+=10; }
-        else videoSets.currentTime-=10;
+        {vd.currentTime+=10;        }
+        else vd.currentTime-=10;
                                     }
         handleCurrPlayback (param)  {
-        var videoSets = this.video;
+        var vd = this.video;
         if (param===1)
-        {videoSets.playbackRate+=0.1;}
-        else videoSets.playbackRate-=0.1;
+        {vd.playbackRate+=0.1;}
+        else vd.playbackRate-=0.1;
                                     }
         handlePlay()                                {
         this.timer = setTimeout(function()          {
         //Скрыть плей
-        $("#vduppermenu,#vdbottommenu,#menu").fadeOut(1000);
-        },7000);                                    }
+        $("#vduppermenu,#vdbottommenu").fadeOut(1000);
+        },5000);
+                                                    }
         menuFullScreenAppears()
         {
         //Отобразить плей
@@ -114,105 +132,91 @@ constructor(props)                                  {
         //Запустить скрытие
         this.handlePlay();
         }
-        escFullScreen()                            {
-        var videoSets = this.video;
-         if  (!document.fullscreenElement
-             && !document.mozFullScreenElement
-             && !document.webkitFullscreenElement
-             && !document.msRequestFullscreen)
-         {   //clearTimeout(this.timer);
-             this.props.dispatch(toggleFullScreen(false));
-             clearTimeout(this.timer);
-             $("#vduppermenu,#vdbottommenu,#menu").fadeIn(100);
-             this.hoverDiv.removeEventListener('mousemove',this.menuFullScreenAppears);
-             //clearTimeout(this.timer);
-         }
-        //this.props.dispatch(toggleFullScreen(false));
-
+        escFullScreen()                           {
+        if (   !document.fullscreenElement
+            && !document.mozFullScreenElement
+            && !document.webkitFullscreenElement
+            && !document.msRequestFullscreen)
+        this.props.dispatch(toggleFullScreen(false));
                                                   }
+
         changeSize()                              {
-        var videoSets = this.video;
+        var    vd = this.video.video;
         if (   !document.fullscreenElement
             && !document.mozFullScreenElement
             && !document.webkitFullscreenElement
             && !document.msRequestFullscreen)
         //from Normal Screen to Full
         {
-       this.handlePlay();
-        if (videoSets.webkitEnterFullscreen)      {
-            videoSets.webkitEnterFullscreen();
+        this.handlePlay();
+        if (vd.webkitEnterFullscreen)             {
+            vd.webkitEnterFullscreen();
             this.props.dispatch(toggleFullScreen(true));
                                                   }
-        else if (videoSets.mozRequestFullScreen)  {
-            videoSets.mozRequestFullScreen();
+        else if (vd.mozRequestFullScreen)         {
+                 vd.mozRequestFullScreen();
             this.props.dispatch(toggleFullScreen(true));
                                                   }
-        else if (videoSets.msRequestFullscreen)   {
-            videoSets.msRequestFullscreen();
+        else if (vd.msRequestFullscreen)          {
+                 vd.msRequestFullscreen();
             this.props.dispatch(toggleFullScreen(true));
                                                   }
-        else if (videoSets.requestFullscreen)     {
-            videoSets.requestFullscreen();
+        else if (vd.requestFullscreen)            {
+                 vd.requestFullscreen();
             this.props.dispatch(toggleFullScreen(true));
                                                   }
         else                                      {
-            alert('Your browsers doesn\'t support fullscreen');
+        //alert('Your browsers doesn\'t support fullscreen');
                                                   }
-
-        //add listeners
-        //$("#vduppermenu,#vdbottommenu").fadeOut(5000);
-        this.hoverDiv.addEventListener('mousemove',this.menuFullScreenAppears);
         document.addEventListener ("webkitfullscreenchange", this.escFullScreen, false);
-        //this.props.dispatch(toggleFullScreen(true));
         }
         //from fullScreen to Normal
-        else                                       {
+        else                                      {
           if        (document.cancelFullScreen)
         {
-                document.cancelFullScreen();
+                     document.cancelFullScreen();
         } else if   (document.mozCancelFullScreen)
         {
-                document.mozCancelFullScreen();
+                    document.mozCancelFullScreen();
         } else if   (document.webkitCancelFullScreen)
         {
-                document.webkitCancelFullScreen();
+                    document.webkitCancelFullScreen();
         }
          this.props.dispatch(toggleFullScreen(false));
-         this.hoverDiv.removeEventListener('mousemove',this.menuFullScreenAppears);
-         clearTimeout(this.timer);
-         //clearTimeout(this.timer);
-                                                   }
-                                                   }
+
+                                                   }}
         //Component Functions
-        render() {
-        this.videoOnLoad();
+        render()        {
+            this.videoOnLoad();
             return (
-                <div                 ref={(dv)=>this.div=dv} className="centerDiv">
-                    <video           width={1500} height={750} id="video" ref={(video)=>this.video=video}
-                                     autoPlay={this.props.isPlaying}
-                                     //onClick={}
-                                        />
-                    <VideoUpperMenu  isPlaying={this.props.isPlaying}
-                                     toggleContext={this.toggle}
-                                     handleOnPlayContext={this.handleOnPlay}
-                                     handleCurrentTimeContext={this.handleCurrTime}
-                                     handleCurrPlaybackContext={this.handleCurrPlayback}/>
-                    <VideoBottomMenu changeSizeContext={this.changeSize}
-                                     changeResContext={this.changeRes}/>
-                    <div id="hoverDiv" className="hoverDiv" ref={(div)=>this.hoverDiv=div}/>
-                </div>
-                    )
-                }
+                        <div         ref={(dv)=>this.div=dv} className="centerDiv">
+                        <Video       isPlaying={this.props.isPlaying}
+                                     fullSize= {this.props.fullScreen}
+                                     video=    {this.props.video}
+                                     ref=      {(video)=>this.video=video}
+                        />
+                        <VideoUpperMenu  isPlaying={this.props.isPlaying}
+                                         toggleContext={this.toggle}
+                                         handleOnPlayContext={this.handleOnPlay}
+                                         handleCurrentTimeContext={this.handleCurrTime}
+                                         handleCurrPlaybackContext={this.handleCurrPlayback}/>
+                        <VideoBottomMenu changeSizeContext={this.changeSize}
+                                         changeResContext= {this.changeRes}/>
+                        <div id="processDiv" className="displayNone"/>
+                        </div>
+                   )
+                       }
                                                     }
                        const mapDispatchToProps = (dispatch) => bindActionCreators({
-                       dispatch,togglePlay,toggleButtons,toggleFullScreen
+                       dispatch,togglePlay,toggleButtons,toggleFullScreen,setChannelsVisible
                        }, dispatch);
-                       export default connect   (
+                       export default connect       (
                        state => ({
                        video:                state.videoReducer.video,
                        isPlaying:            state.videoReducer.isPlaying,
-                       fullScreen:           state.videoReducer.fullScreen,
-                       autoPlay:             state.videoReducer.autoPlay
+                       //fullScreen:           state.videoReducer.fullScreen,
+                       autoPlay:             state.videoReducer.autoPlay,
+                       //menus:                state.menuReducer.menus
                        }),
                        mapDispatchToProps
-                                                     )(VideoPlayer);
+                                                    )(VideoPlayer);

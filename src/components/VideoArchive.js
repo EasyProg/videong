@@ -8,12 +8,10 @@ import noimage from '../img/noimage.png';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
-//import 'react-scrollbar/src/'
-//var ScrollArea = require('react-scrollbar');
-
-var arch =  [
-    {name:'Game of thrones',date:'13.04.2017',      time:'15:30'},
-    {name:'Doctor Dolittle',date:'12.04.2017',      time:'16:30'},
+var arch =
+[
+    {name:'Game of thrones',     date:'13.04.2017', time:'15:30'},
+    {name:'Doctor Dolittle',     date:'12.04.2017', time:'16:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
@@ -22,8 +20,8 @@ var arch =  [
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
-    {name:'Game of thrones',date:'13.04.2017',      time:'15:30'},
-    {name:'Doctor Dolittle',date:'12.04.2017',      time:'16:30'},
+    {name:'Game of thrones',     date:'13.04.2017', time:'15:30'},
+    {name:'Doctor Dolittle',     date:'12.04.2017', time:'16:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
@@ -32,10 +30,10 @@ var arch =  [
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'},
     {name:'Martin Lawrence Life',date:'20.04.2017', time:'10:30'}
-            ];
+];
 
 
-export default class VideoArchive extends Component     {
+export default class VideoArchive extends  Component     {
 constructor(props)      {
     super(props);
                         }

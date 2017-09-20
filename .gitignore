@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# homepage
+/config_file_homepage.json
+
 # sass-cache
 /.sass-cache
 

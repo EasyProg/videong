@@ -1,3 +1,4 @@
+@import 'variables';
 $menu-width:250px;
 .menuItemStyle {
   display: block;
@@ -16,9 +17,9 @@ $menu-width:250px;
 .menuItemStylefocus {
   @extend .menuItemStyle;
   width:320px;
-  background: blueviolet;
+  background: $main_color;
 
-}
+                    }
 .circleButtonSpan {
   width:40px;
   height:40px;
@@ -31,27 +32,30 @@ $menu-width:250px;
   visibility: hidden;
 }
 .menuChannel {
-  //display: block;
+  height:800px;
   position: absolute;
-  top:20px;
-  left:320px;
+  top:0;
+  left:0;
   transition: left 0.5s ease 100ms;
-  //z-index: 100;
-  //transform(translate($menu-width, 0, 0));
-            }
+             }
+.menuChannelLeft {
+  @extend .menuChannel;
+  left:270px;
+}
 .menuChannelNone {
   @extend .menuChannel;
   left:-500px;
-}
+                }
 .divSideBar {
   //position:absolute;
   //text-align: center;
   line-height: 2.8em;
-  margin-left: 10px;
+  margin-top: 15px;
+  margin-left: 50px;
   text-align: center;
   width:45px;
   height:45px;
-}
+            }
 .divSideBar:hover {
   @extend .divSideBar;
   cursor: pointer;

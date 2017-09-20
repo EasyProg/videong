@@ -1,8 +1,8 @@
-export function changeVideo(videoStr,channel,itemChosen,channelId) {
-    console.log(channelId);
+export function changeVideo(video) {
+    //console.log(video);
     return  {
         type: 'CHANGE',
-        video:{videoStr,channel,itemChosen,channelId}
+        video: video
             }
 }
 export function togglePlay(isPlaying)    {
@@ -29,9 +29,10 @@ var result = !isVisible;
             }
 }
 export function toggleFullScreen(isFullScreen) {
+    var isNotFullScreen = isFullScreen;
     return  {
         type:'TOGGLE_FULLSCREEN',
-        fullScreen:isFullScreen
+        fullScreen:isNotFullScreen
             }
 }
 export function toggleCategory(category) {
@@ -40,8 +41,21 @@ export function toggleCategory(category) {
         category
             }
 }
+export function getChannels (channelsArr) {
+    return {
+        type:'GET_CHANNELS',
+        channelsArr
+    }
 
+}
 
+export function setChannelsVisible (visibility) {
+    return {
+        type:'CHANNELS_MENU_VISIBLE',
+        menus:visibility
+           }
+
+}
 
 
 

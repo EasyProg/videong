@@ -1,75 +1,96 @@
 import React, {Component,PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeVideo,toggleCategory,togglePlay} from '../actions/actions';
+import {changeVideo,toggleCategory,togglePlay,getChannels,setChannelsVisible} from '../actions/actions';
 import {Button} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/css/main_styles.css';
+import * as $ from 'jquery';
+import point from '../img/pointing-to-left.gif'
 //import '../components/Channel';
 import Channel from './Channel';
-class ChannelList extends Component {
-constructor(props)              {
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+class ChannelList extends Component   {
+constructor(props)                    {
     super(props);
-    this.filterChannels = this.filterChannels.bind(this);
     this.handleClick = this.handleClick.bind(this);
-                                }
+                                      }
 static propTypes = {
 playList:   PropTypes.array.isRequired,
 category:   PropTypes.string.isRequired,
 visibility: PropTypes.bool.isRequired,
 visibleSetContext:PropTypes.func.isRequired
 };
-handleClick (link,ch,i,cat,channelId) {
-this.props.dispatch(changeVideo(link,ch,i,channelId));
-this.props.dispatch(toggleCategory(cat));
+handleKey(elem,e) {
+    if (e.keyCode===13)
+    {
+        this.handleClick (elem);
+    }
+                }
+handleClick (elem)                    {
+this.props.dispatch(changeVideo(elem));
+this.props.dispatch(toggleCategory(elem.category));
 this.props.dispatch(togglePlay(!this.props.autoPlay));
-this.props.visibleSetContext('left');
+this.props.dispatch(setChannelsVisible({
+    channelsMenuVisible:false,
+    categoryMenuVisible:false,
+    settingsVisible:false
+}));
+//this.props.visibleSetContext('left');
 //Set UI
-                                      }
+                                         }
 
-filterChannels(channels) {
-let cat = this.props.category;
-let filteredChannels = [];
-if (channels) {
-     filteredChannels =  channels.filter(function(item)
-     {
-     if (cat !=='all'&&cat !=='любимые'&&cat !=='locked')
-     return item.category === cat;
-     else return item.category
-     })
-              }
- return filteredChannels;
-                         };
-//
+componentDidMount(){
+//$('channels').focus();
+$('#channels').keydown(function(event){
+ this.categoryElemSwitch(event);
+});
+                   }
+
+componentWillReceiveProps()  {
+//;this.props.dispatch(getChannels(this.props.playList));
+                             }
 render(){
-this.massive = this.filterChannels(this.props.playList);
+this.props.dispatch(getChannels(this.props.playList));
 return         (
                <div>
-               <div className={this.props.visibility?'menuChannel':'menuChannelNone'} onClick={this.props.onClick}>
-               {this.massive.map((elem, i) =>
+               <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick} id="channels">
+                   {this.props.playList.length?<div className="menuHeaderCh"><div className="menuHeaderCircleDiv"><img src={point} width={20} height={20}/></div>{this.props.channelCategory}</div>:''}
+               <PerfectScrollbar>
+               {this.props.playList.map((elem, i) =>
                             <Channel
                             key={i}
-                            channelId       ={elem.channelId}
-                            hiddenChannel   ={this.props.category==='locked'}
-                            programName     ={elem.channel}
-                            favorite        ={this.props.category==='любимые'}
-                            chosen          ={elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
-                            onClick         ={e=>this.handleClick(elem.link,elem.channel,i,elem.category,elem.channelId)}/>
+                            channelId       =   {elem.channelId}
+                            hiddenChannel   =   {this.props.category==='Locked'}
+                            programName     =   {elem.channel}
+                            favorite        =   {this.props.category==='Любимые'}
+                            chosen          =   {elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
+                            onClick         =   {e=>this.handleClick(elem)}
+                            onKeyDown       =   {(e)=>this.handleKey(elem,e)}
+                            />
                )
                }
+               </PerfectScrollbar>
                </div>
                </div>
-)
+                )
         }
-                                }
+                                        }
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-dispatch,changeVideo,toggleCategory,togglePlay
+dispatch,
+changeVideo,
+toggleCategory,
+togglePlay,
+getChannels,
+setChannelsVisible
 }, dispatch);
 export default connect(
 state => ({
 video:state.videoReducer.video,
 channelCategory:state.channelReducer.chosenCategory,
-autoPlay:state.videoReducer.autoPlay
+autoPlay:state.videoReducer.autoPlay,
+categoryMenuVisible:state.menuReducer.menus.categoryMenuVisible
 }),
 mapDispatchToProps
 )(ChannelList);

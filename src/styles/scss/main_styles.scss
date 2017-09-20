@@ -9,6 +9,7 @@
 @import "video_bottom_menu";
 @import "TVChannelImg";
 @import "videoarchive";
+
 * {
   outline: 0;
   border: 0;
@@ -41,7 +42,7 @@ body {
   transition: width 1s ease 1s;
                 }
 .mainMenuDiv {
-  top:0;
+  top:-20px;
   margin-top: 15px;
   position: fixed;
   //position: absolute;
@@ -60,24 +61,43 @@ top:-15px;
 background: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
                  }
 
+
 .menuDives {
   height: 50px;
   //width:150px;
   display: flex;
            }
+//.menuCenterText {
+//  position: relative;
+//  width:500px;
+//}
 .menuCenterText {
-
-}
-.menuCenterText:first-line {
   letter-spacing: 2px;
   font-family: "Comfortaa Light";
-  font-weight: bold;
-  font-size:20px;
-  color:white;  font-family: "Comfortaa Light";
   font-weight: normal;
+  font-size:20px;
   color:white;
+                }
+.menuCenterTextBig {
+  @extend .menuCenterText;
+  font-size:30px;
+  margin-bottom: 10px;
+}
+.menuCenterTextBigBold {
+  @extend .menuCenterTextBig;
+  font-weight:bold;
+
 }
 
 .displayNone {
   display:none;
+  //position:relative;
+  //top:-10%;
+  //position: absolute;
+  z-index:2147483647;
+}
+
+#video {
+  position:relative;
+  //left:10%;
 }

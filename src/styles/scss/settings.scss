@@ -24,7 +24,7 @@ justify-content: space-between;
   @extend .divUsualImg;
   cursor: pointer;
   border-radius: 65px;
-  background: blueviolet;
+  background: $main_color;
 }
 .settingsDiv {
   position:relative;
@@ -56,11 +56,11 @@ border:none;
   @extend .languageButton;
   cursor: pointer;
   border-radius: 5px;
-  background: blueviolet;
+  background: $main_color;
 }
 .switchClass {
   height: 20px;
-  background: blueviolet;
+  background: $main_color;
 }
 .resetToDefault {
   border-radius: 5px;
@@ -68,8 +68,8 @@ border:none;
   position:relative;
   width:90%;
   margin:10px;
-  height:40px;
-  background: blueviolet;
+  height:50px;
+  background: $main_color;
   color:      white;
   font-family: "Comfortaa Light";
   text-align: center;
@@ -78,8 +78,8 @@ border:none;
   margin: 15px;
 }
 .toggleClass.react-toggle--checked .react-toggle-track {
-  background-color: blueviolet;
+  background-color: $main_color;
 }
 .toggleClass.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: blueviolet;
+  background-color: $main_color;
 }

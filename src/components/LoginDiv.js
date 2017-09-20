@@ -7,14 +7,15 @@ constructor (props) {
         this.state = {
             userName:'Вася Пупкин',
             logged:true
-        }
-    }
+                     }
+                    }
 static propTypes = {
         userName: PropTypes.string.isRequired,
         logged:PropTypes.bool
 
     };
 render () {
+
       return (
           <div className="loginDiv">
               <div className="photoDiv">

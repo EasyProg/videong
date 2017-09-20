@@ -1,57 +1,71 @@
-
 import {combineReducers} from 'redux';
 
-
 const initialState = {
-        video: {videoStr:'https://cdnua01.hls.tv/hls/aef8a6a3b11ae0ae60938e653fcdd7aa/51/stream.m3u8',
+        video:       {link:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
         channelId:51,
         channel: '1+1',
         itemChosen:null,
-        },
+                     },
+//Global state variables
         isPlaying:true,
         autoPlay:true,
-        isControlElemsVisible:false,
         fullScreen:false,
-        channelCategory:'',
-        isControlMenuVisible:false,
+        channelCategory:''
                      };
-const channelState = {
-        category:''
-                     };
-const menuState = {
-
-                  };
+const   channelState = {
+        chosenCategory   :'All channels',
+        channels:[]
+                       };
+const  menuState =     {
+       menus:{
+       channelsMenuVisible:false,
+       categoryMenuVisible:false,
+       settingsVisible:false
+             }
+                       };
 
 function videoReducer(state=initialState,action=null)           {
     switch (action.type) {
         case 'CHANGE':
-            return {...state,video:action.video};
+        return {...state,video:action.video||state.video};
         case 'TOGGLE_PLAY':
         return {...state,isPlaying:action.isPlaying};
         case 'TOGGLE_AUTO_PLAY':
-            return {...state,autoPlay:action.autoPlay};
+        return {...state,autoPlay:action.autoPlay};
         case 'TOGGLE_BUTTONS':
-            return {...state,isControlElemsVisible:action.isControlElemsVisible};
+        return {...state,isControlElemsVisible:action.isControlElemsVisible};
         case 'TOGGLE_FULLSCREEN':
-            return {...state,fullScreen:action.fullScreen};
-        // case 'TOGGLE_CATEGORY':
-        //     return {...state,channelCategory:action.category};
+        return {...state,fullScreen:action.fullScreen};
         default:
-            return state;
+        return state;
                         }
                                                                 }
-
+//After adding all channels variables
 function channelReducer (state=channelState,action=null)        {
     switch (action.type) {
         case 'TOGGLE_CATEGORY' :
             return {...state,chosenCategory:action.category};
+        case 'GET_CHANNELS':
+            return {...state,channels:action.channelsArr};
         default:
             return state;
-                        }
+                         }
+                                                                }
+//menu visible
+function menuReducer (state=menuState,action=null)              {
+    switch (action.type) {
+        case 'CHANNELS_MENU_VISIBLE' :
+            return {...state,menus:action.menus};
+        default:
+            return state;
+                         }
                                                                 }
 
+
+//Combine reducers
 const videoApp = combineReducers({
     videoReducer,
-    channelReducer
-});
+    channelReducer,
+    menuReducer
+                                 });
 export default videoApp;
