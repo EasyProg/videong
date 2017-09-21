@@ -4,9 +4,10 @@ import 'semantic-ui-css/semantic.min.css';
 import pause from '../img/pause_button.png';
 import play from '../img/play-button.png';
 import '../styles/css/main_styles.css';
-import  {connect} from 'react-redux';
+import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeVideo,toggleCategory,setChannelsVisible,toggleFullScreen} from '../actions/actions';
+import Timer from '../components/ui/Timer';
 import * as $ from 'jquery';
 class VideoUpperMenu extends Component                         {
         static propTypes = {
@@ -16,11 +17,10 @@ class VideoUpperMenu extends Component                         {
         handleCurrPlaybackContext:PropTypes.func.isRequred,
         isPlaying:PropTypes.bool.isRequired
                            };
-    //Constructor of the class
-    constructor(props)  {
+    constructor(props)     {
         super(props);
         this.switchKeyPress = this.switchKeyPress.bind(this);
-                        }
+                           }
     componentDidMount()                                        {
         var func = this.switchKeyPress;
         var t = this;
@@ -30,18 +30,19 @@ class VideoUpperMenu extends Component                         {
             func(event);
                                                                });
         $('#video').click(
-               function() {
+                function() {
                 t.props.dispatch(setChannelsVisible(
                     {
-                        channelsMenuVisible: false,
-                        categoryMenuVisible: false,
-                        settingsVisible:     false
+                            channelsMenuVisible: false,
+                            categoryMenuVisible: false,
+                            settingsVisible:     false
                     }));
                 this.focus();
-            }
-                        )
+                           }
+                        );
                                                                }
     switchKeyPress(event)                                      {
+        //event.stopPropagation();
         switch (event.keyCode)                                 {
             case 40:
                 this.switchChannel('prev');
@@ -81,16 +82,33 @@ class VideoUpperMenu extends Component                         {
                 ));
                 break;
                                                                }
+            case 13:                                           {
+                if (this.props.menus.channelsMenuVisible)
+                this.props.dispatch(setChannelsVisible(
+                    {
+                            channelsMenuVisible: false,
+                            categoryMenuVisible: false,
+                            settingsVisible:     false
+                    }
+                ));
+            //     if (!this.props.menus.channelsMenuVisible&&
+            //         !this.props.menus.categoryMenuVisible&&
+            //         !this.props.menus.settingsVisible
+            //         )
+            // $("#vduppermenu,#vdbottommenu").fadeIn(1000);
+                break;
+                                                               }
             default:break;
                                                                }
                                                                }
     switchChannel(param='next')                                {
-    var i = this.props.channels.map(x => x.channelId).indexOf(this.props.video.channelId);
+    var i = this.props.channels.map(x =>
+    x.channelId).indexOf(this.props.video.channelId);
     let isOver =  i+1<this.props.channels.length;
     let isPos  =  i-1>=0;
     var nextElem = this.props.channels[i+1];
     var prevElem = this.props.channels[i-1];
-    if (param==='next')                                         {
+    if (param==='next')                                        {
         if (!isOver) nextElem = this.props.channels[0];
         if (nextElem)
         {
@@ -98,7 +116,7 @@ class VideoUpperMenu extends Component                         {
             this.props.dispatch(toggleCategory(nextElem.category));
         }
                                                                 }
-    if (param==='prev'&&prevElem)                               {
+     if (param==='prev')                                        {
         if (!isPos) prevElem = this.props.channels[this.props.channels.length - 1];
         if (prevElem)                                           {
             this.props.dispatch(changeVideo(prevElem));
@@ -106,11 +124,12 @@ class VideoUpperMenu extends Component                         {
                                                                 }
                                                                 }
                                                                 }
+
     render() {
          return (       <div id="vduppermenu" onKeyDown={(e)=>this.switchKeyPress(e)} tabIndex={1} className="displayNone">
-                        <progress id='progress-bar' min='0' max='100' value='0' className='progressBar'>0% played</progress>
+                        <progress id='progress-bar' min='0' max='100' value='0' className={this.props.fullScreen?'progressBarFull':'progressBar'}><div className="progressDiv"/></progress>
                         <div  className="divPlayer">
-                        <div  className="videoTime" id="currentTime">{this.props.handleOnPlayContext.currentTime}</div>
+                        <Timer isWholeProgramTime={true}/>
                         <div  className="playerButtonsDiv">
                         <Icon className="large inverted step backward" onClick={(e)=>this.switchChannel('prev')}/>
                         <Icon className="large inverted backward" onClick={(e)=>this.props.handleCurrentTimeContext(0)}/>
@@ -118,20 +137,20 @@ class VideoUpperMenu extends Component                         {
                         <Icon className="large inverted forward" onClick={(e)=>this.props.handleCurrentTimeContext(1)}/>
                         <Icon className="large inverted step forward" onClick={(e)=>this.switchChannel('next')}/>
                         </div>
-                        <div  className="videoTime" id="duration">{this.props.handleOnPlayContext.duration}</div>
+                        <Timer isWholeProgramTime={false}/>
                         </div>
                         </div>
                 )
-             }
+              }
                                                                 }
 const mapDispatchToProps = (dispatch) => bindActionCreators({
 dispatch,changeVideo,toggleCategory,setChannelsVisible,toggleFullScreen
 }, dispatch);
 export default connect (
-    state => ({fullScreen:state.videoReducer.fullScreen,
-               channels:state.channelReducer.channels,
-               video:state.videoReducer.video,
-               menus:state.menuReducer.menus
-              }),
+    state =>        ({ fullScreen:state.videoReducer.fullScreen,
+                       channels:state.channelReducer.channels,
+                       video:state.videoReducer.video,
+                       menus:state.menuReducer.menus
+                    }),
               mapDispatchToProps
                        )(VideoUpperMenu);

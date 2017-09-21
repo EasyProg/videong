@@ -11,24 +11,24 @@ import point from '../img/pointing-to-left.gif'
 import Channel from './Channel';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-class ChannelList extends Component   {
-constructor(props)                    {
+class ChannelList extends Component     {
+constructor(props)                      {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-                                      }
+                                        }
 static propTypes = {
 playList:   PropTypes.array.isRequired,
 category:   PropTypes.string.isRequired,
 visibility: PropTypes.bool.isRequired,
 visibleSetContext:PropTypes.func.isRequired
 };
-handleKey(elem,e) {
+handleKey(elem,e)                       {
     if (e.keyCode===13)
     {
         this.handleClick (elem);
     }
-                }
-handleClick (elem)                    {
+                                        }
+handleClick (elem)                      {
 this.props.dispatch(changeVideo(elem));
 this.props.dispatch(toggleCategory(elem.category));
 this.props.dispatch(togglePlay(!this.props.autoPlay));
@@ -39,24 +39,17 @@ this.props.dispatch(setChannelsVisible({
 }));
 //this.props.visibleSetContext('left');
 //Set UI
-                                         }
+                                        }
 
-componentDidMount(){
-//$('channels').focus();
-$('#channels').keydown(function(event){
- this.categoryElemSwitch(event);
-});
-                   }
-
-componentWillReceiveProps()  {
-//;this.props.dispatch(getChannels(this.props.playList));
-                             }
 render(){
 this.props.dispatch(getChannels(this.props.playList));
 return         (
                <div>
                <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick} id="channels">
-                   {this.props.playList.length?<div className="menuHeaderCh"><div className="menuHeaderCircleDiv"><img src={point} width={20} height={20}/></div>{this.props.channelCategory}</div>:''}
+               {this.props.playList.length?<div className="menuHeaderCh">
+                <div className="menuHeaderCircleDiv">
+                    <img src={point} width={20} height={20}/>
+                </div>{this.props.channelCategory}</div>:''}
                <PerfectScrollbar>
                {this.props.playList.map((elem, i) =>
                             <Channel
@@ -67,14 +60,14 @@ return         (
                             favorite        =   {this.props.category==='Любимые'}
                             chosen          =   {elem.channelId===this.props.video.channelId&&elem.category===this.props.channelCategory}
                             onClick         =   {e=>this.handleClick(elem)}
-                            onKeyDown       =   {(e)=>this.handleKey(elem,e)}
+                            onKeyDown       =   {e=>this.handleKey(elem,e)}
                             />
                )
                }
                </PerfectScrollbar>
                </div>
                </div>
-                )
+               )
         }
                                         }
 const mapDispatchToProps = (dispatch) => bindActionCreators({

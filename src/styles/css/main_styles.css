@@ -2,7 +2,7 @@
 .menuItemStyle, .menuItemStylefocus {
   display: block;
   cursor: pointer;
-  width: 320px;
+  width: 340px;
   background: rgba(0, 0, 0, 0.7);
   font-family: "Comfortaa Light";
   font-weight: normal;
@@ -14,8 +14,7 @@
   background: rgba(87, 87, 87, 0.6); }
 
 .menuItemStylefocus {
-  width: 320px;
-  background: #8567ff; }
+  background: #ff0900; }
 
 .circleButtonSpan {
   width: 40px;
@@ -102,7 +101,7 @@ video::media-controls {
 #video {
   align-self: center;
   width: 100%;
-  height: auto; }
+  height: 99%; }
 
 .playBackDiv {
   position: fixed;
@@ -115,7 +114,7 @@ video::media-controls {
   margin-right: 50px;
   text-align: center;
   line-height: 2.8em;
-  margin-top: 15px; }
+  margin-top: 20px; }
 
 .homeButton:hover {
   cursor: pointer;
@@ -123,17 +122,19 @@ video::media-controls {
   background: rgba(87, 87, 87, 0.6); }
 
 .homeDiv, .homeDivNone {
+  overflow: hidden;
   text-align: center;
   color: white;
   position: absolute;
   left: 83%;
-  top: -15px;
   display: block;
-  width: 200%;
-  max-width: 320px;
+  width: 210%;
+  max-width: 330px;
   min-width: 200px;
-  height: 570%;
-  background: rgba(0, 0, 0, 0.3);
+  height: 950px;
+  max-height: 1200px;
+  min-height: 500px;
+  background: rgba(0, 0, 0, 0.7);
   transition: all 0.5s ease 100ms;
   opacity: 1; }
 
@@ -183,7 +184,7 @@ hr {
   width: 140px;
   height: 35px;
   border: 1px solid grey;
-  background: #8567ff;
+  background: #ff0900;
   color: white; }
 
 .logoutButton:hover {
@@ -230,7 +231,7 @@ hr {
 .divUsualImgFocus {
   cursor: pointer;
   border-radius: 65px;
-  background: #8567ff; }
+  background: #ff0900; }
 
 .settingsDiv {
   position: relative;
@@ -260,11 +261,11 @@ hr {
 .languageButtonFocus {
   cursor: pointer;
   border-radius: 5px;
-  background: #8567ff; }
+  background: #ff0900; }
 
 .switchClass {
   height: 20px;
-  background: #8567ff; }
+  background: #ff0900; }
 
 .resetToDefault {
   border-radius: 5px;
@@ -273,7 +274,7 @@ hr {
   width: 90%;
   margin: 10px;
   height: 50px;
-  background: #8567ff;
+  background: #ff0900;
   color: white;
   font-family: "Comfortaa Light";
   text-align: center; }
@@ -282,10 +283,10 @@ hr {
   margin: 15px; }
 
 .toggleClass.react-toggle--checked .react-toggle-track {
-  background-color: #8567ff; }
+  background-color: #ff0900; }
 
 .toggleClass.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: #8567ff; }
+  background-color: #ff0900; }
 
 .divInput {
   position: relative;
@@ -301,7 +302,7 @@ hr {
   align-items: center; }
 
 .divInput:hover {
-  border: 1px solid #8567ff;
+  border: 1px solid #ff0900;
   cursor: pointer; }
 
 .inputPassword {
@@ -325,7 +326,7 @@ hr {
   width: 100%;
   margin: 10px;
   height: 40px;
-  background: #8567ff;
+  background: #ff0900;
   color: white;
   font-family: "Comfortaa Light";
   text-align: center; }
@@ -344,11 +345,12 @@ hr {
   background: #434343; }
 
 .categoryPanel, .categoryPanelNone {
+  height: 600px;
   top: -20px;
   display: block;
-  width: 15%;
-  max-width: 15%;
-  min-width: 10%;
+  width: 270px;
+  max-width: 270px;
+  min-width: 270px;
   margin-top: 20px;
   position: absolute;
   left: 0;
@@ -370,8 +372,6 @@ hr {
   display: block;
   cursor: pointer;
   width: 270px;
-  max-width: 270px;
-  min-width: 170px;
   background: rgba(0, 0, 0, 0.7);
   font-family: "Comfortaa Light";
   font-weight: normal;
@@ -397,8 +397,8 @@ hr {
   height: 80px; }
 
 .menuHeaderCh {
-  width: 320px;
-  max-width: 320px; }
+  width: 340px;
+  max-width: 340px; }
 
 .menuHeaderCircleDiv {
   background: #4a4a4a;
@@ -411,11 +411,11 @@ hr {
   text-align: center; }
 
 .categoryItem:hover, .categoryItemChosen:hover {
-  background: #4a4a4a;
+  background: rgba(87, 87, 87, 0.6);
   filter: progid:DXImageTransform.Microsoft.Blur(10px); }
 
 .categoryItemChosen {
-  color: #8567ff; }
+  color: #ff0900; }
 
 .categoryText {
   align-self: center;
@@ -453,7 +453,7 @@ hr {
   max-width: 80%;
   min-width: 350px;
   height: 60px;
-  background: #8567ff;
+  background: #ff0900;
   display: flex;
   display: -webkit-flex;
   flex-direction: row;
@@ -477,16 +477,16 @@ hr {
 
 .videoTime {
   cursor: default;
-  line-height: 3em;
+  line-height: 2.5em;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 40px;
   height: 60px;
   width: 50px;
   font-size: 1.5em;
   font-family: "RobotoRegular";
   color: white; }
 
-.progressBar {
+.progressBar, .progressBarFull {
   position: absolute;
   top: 84%;
   left: 10%;
@@ -499,20 +499,36 @@ hr {
   background: white; }
 
 .progressBarFull {
-  align-self: center;
-  -webkit-align-self: center;
-  height: 15px;
-  width: 800px;
-  background: white; }
+  top: 84.3%; }
 
 #progress-bar::-webkit-progress-bar {
-  background: #8567ff; }
+  background: #ff0900; }
 
 #progress-bar::-webkit-progress-value {
   background: white; }
 
 #progress-bar::-moz-progress-bar {
-  background: #8567ff; }
+  background: #ff0900; }
+
+.progressDiv {
+  border-radius: 5px;
+  width: 5px;
+  height: 5px;
+  background: white; }
+
+.progresses {
+  width: 200px;
+  height: 3px;
+  position: relative;
+  top: -50px;
+  left: 115px;
+  background: #575757; }
+
+.progresses::-webkit-progress-bar {
+  background: #575757; }
+
+.progresses::-webkit-progress-value {
+  background: #ff0900; }
 
 .divBottomPlayer, .divBottomPlayerFull {
   z-index: 2147483647;
@@ -570,7 +586,7 @@ hr {
 
 .iconsDiv:hover {
   cursor: pointer;
-  background: #8567ff;
+  background: #ff0900;
   border-radius: 40px;
   position: inherit; }
 
@@ -589,7 +605,7 @@ hr {
 
 .iconResDiv:hover, .iconResDivFull:hover {
   cursor: pointer;
-  background: #8567ff;
+  background: #ff0900;
   border-radius: 40px; }
 
 .upper_buttons_res, .upper_buttons_live {
@@ -637,14 +653,14 @@ hr {
 
 .pnameFav {
   position: relative;
-  left: 190px;
+  left: 200px;
   top: -50%;
   z-index: 33; }
 
 .rateContainer {
   position: relative;
   top: 25px;
-  margin-right: 10px;
+  margin-right: 20px;
   float: right;
   display: flex;
   flex-direction: row;
@@ -658,7 +674,7 @@ hr {
   height: 7px;
   margin-right: 3px;
   border-radius: 5px;
-  background: #8567ff; }
+  background: #ff0900; }
 
 .rateDivFilledChosen {
   background: white; }
@@ -681,8 +697,9 @@ hr {
   width: 25%;
   max-width: 300px;
   min-width: 300px;
-  height: 700px;
-  background: rgba(0, 0, 0, 0.3);
+  height: 800px;
+  max-height: 800px;
+  background: rgba(0, 0, 0, 0.7);
   transition: all 0.5s ease 100ms;
   opacity: 1; }
 
@@ -707,7 +724,7 @@ hr {
   padding: 4px;
   font-size: 1.8em;
   text-align: center;
-  color: #8567ff;
+  color: #ff0900;
   font-weight: 500; }
 
 .buttonDiv, .buttonDiv:hover {
@@ -750,7 +767,10 @@ hr {
   border: 0; }
 
 body {
-  background: black; }
+  background: black;
+  outline: 0;
+  border: 0;
+  overflow: hidden; }
 
 @font-face {
   font-family: "Comfortaa-Light";
@@ -809,8 +829,5 @@ body {
 .displayNone {
   display: none;
   z-index: 2147483647; }
-
-#video {
-  position: relative; }
 
 /*# sourceMappingURL=main_styles.css.map */

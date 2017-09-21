@@ -12,7 +12,7 @@ static propTypes = {
     //visible:PropTypes.bool.isRequired
                    };
     resolutions = ['360р','480р','720р','1080р','1440р'];
-    constructor(props)      {
+    constructor(props)     {
         super(props);
         this.state = {
            showResolution:false,
@@ -64,7 +64,7 @@ static propTypes = {
                     </div>
                     </div>
                 </div>
-            )
+                 )
         }
         else {
             return (

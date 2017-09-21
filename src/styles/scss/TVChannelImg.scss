@@ -2,28 +2,19 @@
   margin-right: 20px;
   margin-top: 7px;
             }
-//.shadow {
-//  height: 20px;
-//  width:200px;
-//  margin:20px auto;
-//  box-shadow:inset 0px -190px 190px -50px #add7f8;
-//}
 .pname       {
   height: 60px;
   position: absolute;
   white-space:nowrap;
   overflow: hidden;
   width:170px;
-  //margin-bottom: 20px;
              }
 .pnameShadow {
   position: absolute;
   left:90%;
   height: 110%;
-  //box-shadow: 10px 10px 70px 50px rgba(0,0,0,0.7);
   z-index: 30;
              }
-
 .divShadow {
   @extend .pnameShadow;
   background: -webkit-linear-gradient(bottom, rgba(47, 79, 79, 0), #2f4f4f 5em, #2f4f4f);
@@ -32,10 +23,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .pnameFav {
   position: relative;
-  left:190px;
+  left:200px;
   top:-50%;
   z-index: 33;
   //margin-bottom: 20px;
@@ -43,7 +33,7 @@
 .rateContainer {
   position: relative;
   top:25px;
-  margin-right: 10px;
+  margin-right: 20px;
   float: right;
   display:flex;
   flex-direction: row;
@@ -63,8 +53,6 @@
   @extend .rateDivFilled;
   background: white;
 }
-
-
 .rateDivEmpty  {
   width: 7px;
   height: 7px;

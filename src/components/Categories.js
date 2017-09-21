@@ -23,6 +23,7 @@ import 'semantic-ui-css/semantic.min.css';
 import  {connect} from 'react-redux';
 import  {bindActionCreators} from 'redux';
 import  {setChannelsVisible} from '../actions/actions';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import * as $ from 'jquery';
 class   Categories extends Component  {
 constructor(props) {
@@ -106,12 +107,11 @@ if (channels) {
      })
               }
  return filteredChannels;
-                                       };
+                                        };
 switchCateg(event,cat) {
     var i = this.Menu.map(x => x.category).indexOf(cat);
     var nextElem = i + 1 >= this.Menu.length ? 0 : i + 1;
     var prevElem = i - 1 < 0 ? this.Menu.length - 1 : i - 1;
-    //console.log(nextElem+'      '+prevElem);
     switch (event.keyCode)  {
         case 40:
             this.handleClick(nextElem, this.Menu[nextElem].category);
@@ -128,7 +128,8 @@ switchCateg(event,cat) {
         return (
             <div>
             <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories"   onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
-            {/*<div className="menuHeader"><div className="menuHeaderCircleDiv"><img src={point} width={20} height={20}/></div>{this.state.category}</div>*/}
+            <div className="menuHeader"/>
+                <PerfectScrollbar>
                 {
                             this.Menu.map ((item,i)=>
                             <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)} tabIndex={1}>
@@ -140,6 +141,7 @@ switchCateg(event,cat) {
                             </div>
                                           )
                 }
+                </PerfectScrollbar>
             </div>
             <div className="innerDiv">
             <ChannelList
