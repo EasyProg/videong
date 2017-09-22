@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import * as settings from '../settings.json';
 
 
-const initialState = {
+const initialState =    {
         video:       {link:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
         channelId:51,
         channel: '1+1',
@@ -13,7 +13,7 @@ const initialState = {
         autoPlay:true,
         fullScreen:false,
         channelCategory:''
-                     };
+                        };
 const   channelState = {
         chosenCategory   :'All channels',
         channels:[]
@@ -25,7 +25,7 @@ const  menuState =     {
        settingsVisible:false
              }
                        };
-const  settingsState = {
+const  settingsState =  {
        timeShift:       false,
        parentalControl: false,
        catchUp:         false,

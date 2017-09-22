@@ -13,24 +13,23 @@ export default class Channel extends Component {
     static propTypes = {
         channelId: PropTypes.number.isRequired,
         programName: PropTypes.string.isRequired,
-        // channelImg: PropTypes.img,
         hiddenChannel: PropTypes.bool.isRequired,
         chosen: PropTypes.bool.isRequired,
         favorite: PropTypes.bool.isRequired,
                        };
     render() {
         return (
-                <div    className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick} onKeyDown={this.props.onKeyDown}>
-                        <span className="span">{this.props.channelId}</span>
-                        <img  width={40} height={40} src={this.props.hiddenChannel?hiddenchannel:nochannel} className="tvimg"/>
-                        <span className="pname">
-                        {this.props.programName}
-                        <span className="divShadow"/>
-                        </span>
-                        {this.props.favorite ? <span className="pnameFav"><img src={book} width={10} height={10}/></span> : ''}
-                        <Rating maxRate={5} rate={1} chosen={this.props.chosen}/>
-                    <progress className='progresses' value={50} max={100} min={0}/>
-                </div>
+                    <div    className={this.props.chosen ? 'menuItemStylefocus' : 'menuItemStyle'} onClick={this.props.onClick} onKeyDown={this.props.onKeyDown}>
+                            <span className="span">{this.props.channelId}</span>
+                            <img  width={40} height={40} src={this.props.hiddenChannel?hiddenchannel:nochannel} className="tvimg"/>
+                            <span className="pname">
+                            {this.props.programName}
+                            <span className="divShadow"/>
+                            </span>
+                            {this.props.favorite ? <span className="pnameFav"><img src={book} width={10} height={10}/></span> : ''}
+                            <Rating maxRate={5} rate={1} chosen={this.props.chosen}/>
+                        <progress className='progresses' value={50} max={100} min={0}/>
+                    </div>
                 )
              }
                                                 }

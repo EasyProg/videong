@@ -11,10 +11,6 @@ import Timer from '../components/ui/Timer';
 import * as $ from 'jquery';
 class VideoUpperMenu extends Component                         {
         static propTypes = {
-        // toggleContext:PropTypes.func.isRequired,
-        // handleOnPlayContext:PropTypes.func.isRequred,
-        // handleCurrentTimeContext:PropTypes.func.isRequred,
-        // handleCurrPlaybackContext:PropTypes.func.isRequred,
         isPlaying:PropTypes.bool.isRequired
                            };
     constructor(props)     {
@@ -63,7 +59,7 @@ class VideoUpperMenu extends Component                         {
                 else if (this.props.menus.channelsMenuVisible) {
                     this.props.dispatch(setChannelsVisible(
                         {
-                            channelsMenuVisible: true,
+                            channelsMenuVisible: false,
                             categoryMenuVisible: true,
                             settingsVisible:     false
                         }
@@ -91,11 +87,6 @@ class VideoUpperMenu extends Component                         {
                             settingsVisible:     false
                     }
                 ));
-            //     if (!this.props.menus.channelsMenuVisible&&
-            //         !this.props.menus.categoryMenuVisible&&
-            //         !this.props.menus.settingsVisible
-            //         )
-            // $("#vduppermenu,#vdbottommenu").fadeIn(1000);
                 break;
                                                                }
             default:break;
@@ -127,14 +118,14 @@ class VideoUpperMenu extends Component                         {
 
     render() {
          return (       <div id="vduppermenu" onKeyDown={(e)=>this.switchKeyPress(e)} tabIndex={1} className="displayNone">
-                        <progress id='progress-bar' min='0' max='100' value='0' className={this.props.fullScreen?'progressBarFull':'progressBar'}><div className="progressDiv"/></progress>
+                        <progress id='progress-bar' min='0' max='100' value='0' className={this.props.isTimeShift?'progressBarFull':'displayNone'}><div className="progressDiv"/></progress>
                         <div  className="divPlayer">
                         <Timer isWholeProgramTime={true}/>
                         <div  className="playerButtonsDiv">
                         <Icon className="large inverted step backward" onClick={(e)=>this.switchChannel('prev')}/>
-                        <Icon className="large inverted backward" onClick={(e)=>this.props.handleCurrentTimeContext(0)}/>
+                        {this.props.isTimeShift?<Icon className="large inverted backward" onClick={(e)=>this.props.handleCurrentTimeContext(0)}/>:''}
                         <img  onClick={(e)=>this.props.toggleContext(this.props.isPlaying)} width={45} height={45} src={this.props.isPlaying?pause:play} />
-                        <Icon className="large inverted forward" onClick={(e)=>this.props.handleCurrentTimeContext(1)}/>
+                        {this.props.isTimeShift?<Icon className="large inverted forward" onClick={(e)=>this.props.handleCurrentTimeContext(1)}/>:''}
                         <Icon className="large inverted step forward" onClick={(e)=>this.switchChannel('next')}/>
                         </div>
                         <Timer isWholeProgramTime={false}/>
@@ -150,7 +141,8 @@ export default connect (
     state =>        ({ fullScreen:state.videoReducer.fullScreen,
                        channels:state.channelReducer.channels,
                        video:state.videoReducer.video,
-                       menus:state.menuReducer.menus
+                       menus:state.menuReducer.menus,
+                       isTimeShift:state.settingsReducer.timeShift
                     }),
               mapDispatchToProps
                        )(VideoUpperMenu);

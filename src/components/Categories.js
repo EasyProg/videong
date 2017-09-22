@@ -25,6 +25,7 @@ import  {bindActionCreators} from 'redux';
 import  {setChannelsVisible,getChannels} from '../actions/actions';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import * as $ from 'jquery';
+import ReactDOM from 'react-dom';
 class   Categories extends Component  {
 constructor(props) {
     super(props);
@@ -33,6 +34,7 @@ constructor(props) {
         category:'All channels'
                  };
     this.filterChannels = this.filterChannels.bind(this);
+    this.categ = [];
                    }
     static propTypes =   {
     visible:PropTypes.bool.isRequired,
@@ -109,14 +111,27 @@ this.props.dispatch(getChannels(filteredChannels));
 return filteredChannels;
                                         };
 switchCateg(event,cat)      {
+    //var items = ReactDOM.findDOMNode('categoryItem');
+    //console.log(items);
+    //var items = document.getElementsByClassName('categoryItem');
+    //console.log(items);
     var i = this.Menu.map(x => x.category).indexOf(cat);
     var nextElem = i + 1 >= this.Menu.length ? 0 : i + 1;
     var prevElem = i - 1 < 0 ? this.Menu.length - 1 : i - 1;
     switch (event.keyCode)  {
+
+
+
+
         case 40:
+            //console.log(this.categ);
+            //items[nextElem].focus();
+            //console.log(items[nextElem].getAttribute('key'));
+            //items[nextElem].addClass('workMotherFucker');
             this.handleClick(nextElem, this.Menu[nextElem].category);
             break;
         case 38:
+            //items[prevElem].focus();
             this.handleClick(prevElem, this.Menu[prevElem].category);
             break;
         default:
@@ -127,7 +142,7 @@ switchCateg(event,cat)      {
     render()                {
         return (
             <div>
-            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories"   onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
+            <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories" onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
             <div className="menuHeader"/>
                 <PerfectScrollbar>
                 {

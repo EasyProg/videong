@@ -136,7 +136,7 @@ video::media-controls {
   width: 345px;
   max-width: 345px;
   min-width: 200px;
-  height: 1000px;
+  height: 700px;
   max-height: 1200px;
   min-height: 500px;
   background: rgba(0, 0, 0, 0.7);
@@ -373,7 +373,7 @@ hr {
   left: -500px;
   transition: left 0.5s ease 100ms; }
 
-.categoryItem, .categoryItemChosen {
+.categoryItem, .categoryItemChosen, .workMotherFucker {
   display: block;
   cursor: pointer;
   width: 270px;
@@ -415,12 +415,19 @@ hr {
   line-height: 4em;
   text-align: center; }
 
-.categoryItem:hover, .categoryItemChosen:hover {
+.categoryItem:hover, .categoryItemChosen:hover, .workMotherFucker:hover {
+  background: rgba(87, 87, 87, 0.6);
+  filter: progid:DXImageTransform.Microsoft.Blur(10px); }
+
+.categoryItem:focus, .categoryItemChosen:focus, .workMotherFucker:focus {
   background: rgba(87, 87, 87, 0.6);
   filter: progid:DXImageTransform.Microsoft.Blur(10px); }
 
 .categoryItemChosen {
   color: #9677ff; }
+
+.workMotherFucker {
+  background: rgba(87, 87, 87, 0.6); }
 
 .categoryText {
   align-self: center;

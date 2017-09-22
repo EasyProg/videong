@@ -49,14 +49,15 @@ export default class HomeMenu extends Component {
             default: return <div/>
                                 }
                                 }
-        Parental = props =>
-            (<div>
+        Parental = props => (
+            <div>
             <div className={this.state.itemChosen!==2?"menuItemStyle":"menuItemStylefocus"} onClick={(e)=>this.handleItem(2)}>
             <img src={baby} width="35" height="35" className="imgStyle"/>Parental control</div>
             <ReactCSSTransitionGroup transitionName="settings_transition">
              {this.state.itemChosen===2?this.ConditionalRendering(this.state.itemChosen):null}
             </ReactCSSTransitionGroup>
-            </div>);
+            </div>
+                            );
         Settings = props => (
             <div>
             <div className={this.state.itemChosen!==3?"menuItemStyle":"menuItemStylefocus"} onClick={(e)=>this.handleItem(3)}>

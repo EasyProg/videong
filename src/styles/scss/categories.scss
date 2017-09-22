@@ -81,9 +81,18 @@ display:none;
   background: $hollowColor;
   filter:progid:DXImageTransform.Microsoft.Blur(10px);
 }
+.categoryItem:focus {
+  background: $hollowColor;
+  filter:progid:DXImageTransform.Microsoft.Blur(10px);
+}
 .categoryItemChosen {
   @extend .categoryItem;
   color: $main_color;
+}
+
+.workMotherFucker {
+  @extend .categoryItem;
+  background: $hollowColor;
 }
 .categoryText {
   align-self: center;
