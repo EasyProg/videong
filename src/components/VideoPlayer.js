@@ -61,7 +61,7 @@ class VideoPlayer extends Component                {
         //this.vd.removeEndEventListener('timeupdate');
 
                                 }
-        toggle(isPlaying)           {
+        toggle(isPlaying)       {
         var vd = this.video.video;
         //const vd = this.video;
         this.props.dispatch(togglePlay(isPlaying));
@@ -69,7 +69,7 @@ class VideoPlayer extends Component                {
             vd.play();
                                 }
         else vd.pause();
-                                    }
+                                }
         changeRes(res)          {
                                 }
         videoOnLoad()               {
@@ -180,13 +180,14 @@ class VideoPlayer extends Component                {
         //Component Functions
         render()        {
             this.videoOnLoad();
-            return (
-                        <div         ref={(dv)=>this.div=dv} className="centerDiv">
-                        <Video       isPlaying={this.props.isPlaying}
-                                     fullSize= {this.props.fullScreen}
-                                     video=    {this.props.video}
-                                     ref=      {(video)=>this.video=video}
+            return      (
+                        <div             ref={(dv)=>this.div=dv} className="centerDiv">
+                        <Video           isPlaying={this.props.isPlaying}
+                                         fullSize= {this.props.fullScreen}
+                                         video=    {this.props.video}
+                                         ref=      {(video)=>this.video=video}
                         />
+                        <div className="panelDiv"/>
                         <VideoUpperMenu  isPlaying={this.props.isPlaying}
                                          toggleContext={this.toggle}
                                          handleOnPlayContext={this.handleOnPlay}
@@ -196,7 +197,7 @@ class VideoPlayer extends Component                {
                                          changeResContext= {this.changeRes}/>
                         <div id="processDiv" className="displayNone"/>
                         </div>
-                   )
+                        )
                        }
                                                     }
                        const mapDispatchToProps = (dispatch) => bindActionCreators({
@@ -206,9 +207,8 @@ class VideoPlayer extends Component                {
                        state => ({
                        video:                state.videoReducer.video,
                        isPlaying:            state.videoReducer.isPlaying,
-                       //fullScreen:           state.videoReducer.fullScreen,
                        autoPlay:             state.videoReducer.autoPlay,
-                       //menus:                state.menuReducer.menus
+                       fullScreen:           state.videoReducer.fullScreen
                        }),
                        mapDispatchToProps
                                                     )(VideoPlayer);

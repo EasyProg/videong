@@ -5,25 +5,23 @@
   text-align: center;
   line-height: 2.8em;
   margin-top: 20px;
-}
+            }
 .homeButton:hover {
   @extend .homeButton;
   cursor: pointer;
   border-radius: 50px;
   background: rgba(87, 87, 87, 0.6)
-}
-.homeDiv {
-  overflow: hidden;
+                  }
+.homeDiv {;
   text-align: center;
   color:white;
   position:absolute;
-  left:83%;
-  //top:50px;
+  right:0;
   display: block;
-  width:210%;
-  max-width:330px;
+  width:345px;
+  max-width:345px;
   min-width:200px;
-  height: 950px;
+  height:1000px;
   max-height: 1200px;
   min-height: 500px;
   background: $backMenuColor;

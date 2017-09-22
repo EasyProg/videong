@@ -11,7 +11,6 @@ const  store = configureStore();
 //var proxy = 'https://cors-anywhere.herokuapp.com/';
 class App extends Component  {
 render() {
-console.log(settings);
     return (
         <Provider store={store}>
         <div>

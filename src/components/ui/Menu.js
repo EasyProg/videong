@@ -60,7 +60,7 @@ class Menu extends Component            {
                          onClick={(e) => this.toggleMenuState('right')}>
                          <img src={home} width={40} height={40}/>
                     </div>
-                    <HomeMenu visible={this.props.menus.settingsVisible}/>
+                    <HomeMenu visible={this.props.menus.settingsVisible} isParentControl/>
                 </div>
             </div>
               )
@@ -75,7 +75,9 @@ state => ({fullScreen:state.videoReducer.fullScreen,
            channel:   state.videoReducer.video.channel,
            channelId: state.videoReducer.video.channelId,
            category:  state.channelReducer.chosenCategory,
-           menus:     state.menuReducer.menus
+           menus:     state.menuReducer.menus,
+           isParentControl:
+                      state.settingsReducer.parentalControl
           }),
           mapDispatchToProps
                        )(Menu);

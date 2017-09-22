@@ -7,8 +7,8 @@ import border from '../img/switch_button.gif';
 import live from '../img/live-icon.gif';
 class VideoBottomMenu extends Component  {
 static propTypes = {
-    changeSizeContext:PropTypes.func.isRequred,
-    changeResContext:PropTypes.func.isRequred,
+    // changeSizeContext:PropTypes.func.isRequred,
+    // changeResContext:PropTypes.func.isRequred,
     //visible:PropTypes.bool.isRequired
                    };
     resolutions = ['360р','480р','720р','1080р','1440р'];

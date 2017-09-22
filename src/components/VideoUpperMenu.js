@@ -11,10 +11,10 @@ import Timer from '../components/ui/Timer';
 import * as $ from 'jquery';
 class VideoUpperMenu extends Component                         {
         static propTypes = {
-        toggleContext:PropTypes.func.isRequired,
-        handleOnPlayContext:PropTypes.func.isRequred,
-        handleCurrentTimeContext:PropTypes.func.isRequred,
-        handleCurrPlaybackContext:PropTypes.func.isRequred,
+        // toggleContext:PropTypes.func.isRequired,
+        // handleOnPlayContext:PropTypes.func.isRequred,
+        // handleCurrentTimeContext:PropTypes.func.isRequred,
+        // handleCurrPlaybackContext:PropTypes.func.isRequred,
         isPlaying:PropTypes.bool.isRequired
                            };
     constructor(props)     {
@@ -29,17 +29,17 @@ class VideoUpperMenu extends Component                         {
             //event.preventDefault();
             func(event);
                                                                });
-        $('#video').click(
-                function() {
+        $('#video,.panelDiv').click (
+                function()      {
                 t.props.dispatch(setChannelsVisible(
                     {
                             channelsMenuVisible: false,
                             categoryMenuVisible: false,
                             settingsVisible:     false
                     }));
-                this.focus();
-                           }
-                        );
+                    $('#video').focus();
+                                }
+                                    );
                                                                }
     switchKeyPress(event)                                      {
         //event.stopPropagation();

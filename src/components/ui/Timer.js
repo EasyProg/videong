@@ -3,8 +3,8 @@ export default class Timer extends Component {
     constructor(props)  {
     super(props);
     this.state = {
-    currentTime: 'FUCK!!!',
-    wholeTime:   'FUCK!!!'
+    currentTime: '00:00',
+    wholeTime:   '00:00'
                  };
     this.handleOnPlay   = this.handleOnPlay.bind(this);
                         };

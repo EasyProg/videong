@@ -15,11 +15,11 @@ class ChannelList extends Component     {
 constructor(props)                      {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.categVisible = this.categVisible.bind(this);
                                         }
 static propTypes = {
 playList:   PropTypes.array.isRequired,
 category:   PropTypes.string.isRequired,
-visibility: PropTypes.bool.isRequired,
 visibleSetContext:PropTypes.func.isRequired
 };
 handleKey(elem,e)                       {
@@ -37,18 +37,26 @@ this.props.dispatch(setChannelsVisible({
     categoryMenuVisible:false,
     settingsVisible:false
 }));
-//this.props.visibleSetContext('left');
 //Set UI
+                                        }
+categVisible()                          {
+this.props.dispatch(setChannelsVisible  (
+        {
+            channelsMenuVisible:false,
+            categoryMenuVisible:true,
+            settingsVisible:false
+        }                               ))
+
                                         }
 
 render(){
-this.props.dispatch(getChannels(this.props.playList));
+//this.props.dispatch(getChannels(this.props.playList));
 return         (
                <div>
-               <div className={!this.props.visibility?'menuChannelNone':this.props.categoryMenuVisible?'menuChannelLeft':'menuChannel'} onClick={this.props.onClick} id="channels">
+               <div className={this.props.channelsMenuVisible?'menuChannel':'menuChannelNone'} onClick={this.props.onClick} id="channels">
                {this.props.playList.length?<div className="menuHeaderCh">
-                <div className="menuHeaderCircleDiv">
-                    <img src={point} width={20} height={20}/>
+                <div className="menuHeaderCircleDiv" onClick={(e)=>this.categVisible()}>
+                <img src={point} width={20} height={20}/>
                 </div>{this.props.channelCategory}</div>:''}
                <PerfectScrollbar>
                {this.props.playList.map((elem, i) =>
@@ -83,7 +91,7 @@ state => ({
 video:state.videoReducer.video,
 channelCategory:state.channelReducer.chosenCategory,
 autoPlay:state.videoReducer.autoPlay,
-categoryMenuVisible:state.menuReducer.menus.categoryMenuVisible
+channelsMenuVisible:state.menuReducer.menus.channelsMenuVisible
 }),
 mapDispatchToProps
 )(ChannelList);

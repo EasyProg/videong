@@ -12,7 +12,7 @@ import underline from '../img/Underline.png';
 import play from '../img/play-categ.png';
 import lock from '../img/lock.png';
 import all from '../img/crowd-of-users.png';
-import point from '../img/pointing-to-left.gif'
+import point from '../img/pointing-to-left.gif';
 //import elements
 import {Icon} from 'semantic-ui-react';
 import ChannelList from '../components/ChannelList';
@@ -22,7 +22,7 @@ import '../styles/css/main_styles.css';
 import 'semantic-ui-css/semantic.min.css';
 import  {connect} from 'react-redux';
 import  {bindActionCreators} from 'redux';
-import  {setChannelsVisible} from '../actions/actions';
+import  {setChannelsVisible,getChannels} from '../actions/actions';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import * as $ from 'jquery';
 class   Categories extends Component  {
@@ -34,25 +34,25 @@ constructor(props) {
                  };
     this.filterChannels = this.filterChannels.bind(this);
                    }
-    static propTypes =  {
+    static propTypes =   {
     visible:PropTypes.bool.isRequired,
     channelVisible:PropTypes.bool.isRequired
-                        };
-handleClick (index,cat)     {
+                         };
+handleClick (index,cat)             {
        this.setState(
-           {
-            itemChosen:index,
-            category:cat
-           }
-           );
+               {
+                itemChosen:index,
+                category:cat
+               }
+               );
        this.props.dispatch(setChannelsVisible (
-            {
-                channelsMenuVisible:true,
-                categoryMenuVisible:true,
-                settingsVisible:false
-            }
+                {
+                    channelsMenuVisible:true,
+                    categoryMenuVisible:false,
+                    settingsVisible:false
+                }
                                               ));
-                            }
+                                    }
     parse(arr) {
     var channels = [];
     var t = '';
@@ -94,8 +94,7 @@ handleClick (index,cat)     {
     {name:'Travel',      src:caravan,   category:'Путешевствия'},
     {name:'Comedy',      src:masks,     category:'Развлекательный'}
                 ];
-filterChannels(channels)               {
-
+filterChannels(channels)                {
 var cat = this.state.category?this.state.category.toString():'All channels';
 let filteredChannels = [];
 if (channels) {
@@ -106,9 +105,10 @@ if (channels) {
      else return item.category
      })
               }
- return filteredChannels;
+this.props.dispatch(getChannels(filteredChannels));
+return filteredChannels;
                                         };
-switchCateg(event,cat) {
+switchCateg(event,cat)      {
     var i = this.Menu.map(x => x.category).indexOf(cat);
     var nextElem = i + 1 >= this.Menu.length ? 0 : i + 1;
     var prevElem = i - 1 < 0 ? this.Menu.length - 1 : i - 1;
@@ -122,9 +122,9 @@ switchCateg(event,cat) {
         default:
         $('#video').focus();
                             }
-                        }
+                            }
 
-    render()   {
+    render()                {
         return (
             <div>
             <div className= {this.props.visible?"categoryPanel":"categoryPanelNone"} tabIndex={1} id="categories"   onKeyDown={(e)=>this.switchCateg(e,this.state.category)}>
@@ -132,7 +132,7 @@ switchCateg(event,cat) {
                 <PerfectScrollbar>
                 {
                             this.Menu.map ((item,i)=>
-                            <div key={i} className='categoryItem' onClick={(e)=>this.handleClick (i,item.category)} tabIndex={1}>
+                            <div key={i} className='categoryItem' onClick={e=>this.handleClick (i,item.category)} tabIndex={1}>
                             <div         className="categoryImage"><img src={item.src} width="40" height="40"/></div>
                             <div         className="categoryText">
                             {item.name}
@@ -147,17 +147,16 @@ switchCateg(event,cat) {
             <ChannelList
                     playList={this.filterChannels(this.parse(hlsArray))}
                     category={this.state.category}
-                    visibility={this.props.channelVisible}
                     visibleSetContext={this.props.toggleMenuStateContext}
                     tabIndex={1}
             />
             </div>
             </div>
                 )
-                }
+                            }
                                                      }
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    dispatch,setChannelsVisible
+    dispatch,setChannelsVisible,getChannels
 },  dispatch);
 export default connect(
     state => ({}),

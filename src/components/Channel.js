@@ -13,7 +13,7 @@ export default class Channel extends Component {
     static propTypes = {
         channelId: PropTypes.number.isRequired,
         programName: PropTypes.string.isRequired,
-        channelImg: PropTypes.img,
+        // channelImg: PropTypes.img,
         hiddenChannel: PropTypes.bool.isRequired,
         chosen: PropTypes.bool.isRequired,
         favorite: PropTypes.bool.isRequired,

@@ -1,4 +1,6 @@
 import {combineReducers} from 'redux';
+import * as settings from '../settings.json';
+
 
 const initialState = {
         video:       {link:'https://cdnua01.hls.tv/hls/79fe07520e89862e02b2d00fecf02ca9/3303/stream.m3u8',
@@ -23,6 +25,12 @@ const  menuState =     {
        settingsVisible:false
              }
                        };
+const  settingsState = {
+       timeShift:       false,
+       parentalControl: false,
+       catchUp:         false,
+       epgStatus:       false,
+                        };
 
 function videoReducer(state=initialState,action=null)           {
     switch (action.type) {
@@ -60,12 +68,16 @@ function menuReducer (state=menuState,action=null)              {
             return state;
                          }
                                                                 }
+function settingsReducer(state=settingsState,action=null)       {
+    return  state;
+}
 
 
 //Combine reducers
 const videoApp = combineReducers({
     videoReducer,
     channelReducer,
-    menuReducer
+    menuReducer,
+    settingsReducer
                                  });
 export default videoApp;

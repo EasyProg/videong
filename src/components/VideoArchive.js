@@ -53,7 +53,7 @@ constructor(props)      {
                     </div>
                                             <PerfectScrollbar>
                                             {
-                                            arch.map((item,i)=><div  className="archItemDiv">
+                                            arch.map((item,i)=><div  className="archItemDiv" key={i}>
                                             <img src={noimage}/>
                                             <div  className="timeZone">
                                             <span><div>{item.name}</div>{item.date}{' | '}{item.time}</span>
